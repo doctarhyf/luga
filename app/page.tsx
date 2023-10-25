@@ -1,60 +1,30 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { strings, Word } from "./flow/strings";
-
-interface WordToken {
-  fr: string;
-  zh: string;
-  sw: string;
-}
-
-type Country = {
-  id: number;
-  img: string;
-  name: string;
-  me: string;
-  lang: string;
-};
-
-const countries: Record<string, Country> = {
-  DRC: {
-    id: 0,
-    img: "/drc.png",
-    name: "DR Congo",
-    me: "Swahili",
-    lang: "sw",
-  },
-  PRC: {
-    id: 1,
-    img: "/prc.png",
-    name: "People's Republic of China",
-    me: "中文",
-    lang: "zh",
-  },
-  FR: {
-    id: 2,
-    img: "/fr.png",
-    name: "France",
-    me: "Francais",
-    lang: "fr",
-  },
-};
+import { countries, Country, strings, Word } from "./flow/flow";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [selectedCountry, setSelectedCountry]: [Country, any] = useState(
     countries.DRC
   );
 
+  const router = useRouter();
+
   function onCardClicked(country: Country) {
     setSelectedCountry(country);
+    localStorage.setItem("CT", JSON.stringify(country));
+  }
+
+  function onStart() {
+    router.push("/home");
   }
 
   return (
     <main className="p-4 text-center">
       <p className="text-[28pt] my-8">Je suis: / 我是:</p>
 
-      <div className=" mx-auto text-center w-fit  md:flex md:flex-row md:space-x-4 justify-center">
+      <div className="  text-center  md:flex gap-4 justify-center">
         {Object.values(countries).map((country, i) => (
           <div
             onClick={(e) => onCardClicked(country)}
@@ -63,8 +33,9 @@ export default function Home() {
               country.id === selectedCountry.id
                 ? " border-sky-500 border bg-sky-500 text-white  "
                 : ""
-            } cursor-pointer border hover:border-sky-300 card mb-4 p-4 w-96 bg-base-100 shadow-xl`}
+            } cursor-pointer border hover:border-sky-300 card mb-4 p-4 w-full bg-base-100 shadow-xl`}
           >
+            cool
             <Image
               className="mx-auto"
               src={country.img}
@@ -78,7 +49,10 @@ export default function Home() {
         ))}
       </div>
 
-      <button className="btn btn-primary">
+      <button
+        className="btn md:w-80 w-full btn-primary"
+        onClick={(e) => onStart()}
+      >
         {strings[1][selectedCountry.lang as keyof Word]}
       </button>
     </main>

@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/flow/strings.ts"
+    "app/flow/flow.ts"
   ],
   "exclude": ["node_modules"]
 }
