@@ -32,11 +32,8 @@ function Home() {
       <div className="my-4">{strings[3][lang as keyof Word]}</div>
       <div className=" md:flex flex-wrap ">
         {categories.map((cat, i) => (
-          <Link href={"/words/?cat=" + cat.path}>
-            <div
-              key={i}
-              className=" w-full md:w-fit flex-grow p-2 m-1 mb-4 cursor-pointer hover:bg-sky-500 hover:text-white border rounded-md"
-            >
+          <Link key={i} href={"/words/?cat=" + cat.path}>
+            <div className=" w-full md:w-fit flex-grow p-2 m-1 mb-4 cursor-pointer hover:bg-sky-500 hover:text-white border rounded-md">
               <div className=" ">
                 <div className="bg-red-500">
                   <Image
