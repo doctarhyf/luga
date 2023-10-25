@@ -4,6 +4,34 @@ export interface Word {
   zh: string;
 }
 
+export interface Category {
+  id: number;
+  name: Record<string, string>;
+  pic: string;
+  path: string;
+}
+
+export const categories: Category[] = [
+  {
+    id: 0,
+    name: { fr: "Cimenterie", zh: "水泥车间", sw: "Atelier ya ciment" },
+    pic: "/ciment.jpg",
+    path: "ciment",
+  },
+  {
+    id: 1,
+    name: { fr: "Outillages", zh: "工具", sw: "Ma outils" },
+    pic: "/tools.jpg",
+    path: "tools",
+  },
+  {
+    id: 2,
+    name: { fr: "Verbes d'actions", zh: "动词", sw: "Ma verbes" },
+    pic: "/verbs.jpg",
+    path: "verb",
+  },
+];
+
 export const strings: Word[] = [
   { fr: "Bonjour", sw: "Ni dje?", zh: "你好" },
   { fr: "Demarrer", sw: "Anza", zh: "开始" },

@@ -1,6 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Country, Word, strings } from "../flow/flow";
+import { Category, Country, Word, categories, strings } from "../flow/flow";
+import next from "../../public/next.svg";
+import Image from "next/image";
+import Link from "next/link";
 
 function Home() {
   const [lang, setlang] = useState("fr");
@@ -26,7 +29,32 @@ function Home() {
           className="input input-bordered w-full md:max-w-xs "
         />
       </div>
-      <div>{strings[3][lang as keyof Word]}</div>
+      <div className="my-4">{strings[3][lang as keyof Word]}</div>
+      <div className=" md:flex flex-wrap ">
+        {categories.map((cat, i) => (
+          <Link href={"/words/?cat=" + cat.path}>
+            <div
+              key={i}
+              className=" w-full md:w-fit flex-grow p-2 m-1 mb-4 cursor-pointer hover:bg-sky-500 hover:text-white border rounded-md"
+            >
+              <div className=" ">
+                <div className="bg-red-500">
+                  <Image
+                    src={cat.pic}
+                    className="w-full h-[100pt] object-cover aspect-video"
+                    width={200}
+                    height={200}
+                    alt="next"
+                  />
+                </div>
+                <div className="text-lg my-2  group-hover:text-white ">
+                  {cat.name[lang]}
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
