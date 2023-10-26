@@ -164,9 +164,9 @@ export default function Home() {
           {features.map(
             (feat, i) =>
               feat.big && (
-                <div key={i}>
+                <div key={i} className="">
                   <div
-                    className={` ${
+                    className={`   ${
                       i % 2 !== 0 ? "md:ml-[90%]" : ""
                     } my-8 text-xs text-transparent border-b-4 w-fit mx-auto md:mx-0 border-pink-500`}
                   >
@@ -174,8 +174,8 @@ export default function Home() {
                   </div>
 
                   <div
-                    className={`flex ${
-                      i % 2 !== 0 ? "flex-row-reverse" : ""
+                    className={`flex flex-col md:flex-row ${
+                      i % 2 !== 0 ? "md:flex-row-reverse" : ""
                     }  gap-8`}
                   >
                     <div>
