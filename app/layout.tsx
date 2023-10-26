@@ -33,14 +33,14 @@ export function Header() {
 export function Footer() {
   return (
     <div className="main-footer bg-black h-max text-white relative min-h-[120pt] ">
-      <div className="p-4 text-white flex flex-col md:flex-row gap-4">
+      <div className=" max-w-[900px] mx-auto p-4 text-white flex flex-col md:flex-row gap-4">
         {["Home", "Categories"].map((l, i) => (
           <Link key={i} href={`/${l}`}>
             {l}
           </Link>
         ))}
       </div>
-      <div className="bg-neutral-800 text-sm text-neutral-400 p-4 absolute bottom-0 w-full">
+      <div className="bg-neutral-800 md:text-center text-sm text-neutral-400 p-4 absolute bottom-0 w-full">
         © 2023 - Luga. All Rights Reserved.
       </div>
     </div>
