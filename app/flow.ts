@@ -48,7 +48,12 @@ export const strings: Word[] = [
   { fr: "Bonjour", sw: "Ni dje?", zh: "你好" },
   { fr: "Demarrer", sw: "Anza", zh: "开始" },
   { fr: "Rechercher", sw: "Mina tafuta ...", zh: "搜索" },
-  { fr: "Catégories", sw: "Catégories", zh: "类别" },
+  { fr: "Catégories", sw: "Categories", zh: "类别" },
+  {
+    fr: "Choisir le type de categorie",
+    sw: "Choose the words category",
+    zh: "选择类别",
+  },
 ];
 
 export type Country = {

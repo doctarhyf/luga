@@ -21,9 +21,14 @@ function Home() {
   }, []);
 
   return (
-    <div className="">
-      <div className=" text-[28pt] my-8 text-amber-600 ">
-        {strings[3][lang as keyof Word]}
+    <div className="max-w-[900px] mx-auto">
+      <div className="border-b mb-4">
+        <div className="  text-[28pt] my-4 text-amber-600 ">
+          {strings[3][lang as keyof Word]}
+        </div>
+        <div className="   my-4 text-neutral-500 ">
+          {strings[4][lang as keyof Word]}
+        </div>
       </div>
       <div className=" md:flex  ">
         {categories.map((cat, i) => (

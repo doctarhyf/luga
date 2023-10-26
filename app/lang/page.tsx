@@ -21,7 +21,7 @@ export default function Home() {
   }
 
   return (
-    <main className="p-4 text-center">
+    <main className="p-4 text-center max-w-[900px] mx-auto ">
       <p className="text-[18pt] my-8">
         Tshakula langue/语言选择/choisir la langue
       </p>
