@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { countries, Country, strings, Word } from "./flow";
+import { countries, Country, strings, Word } from "../flow";
 import { useRouter } from "next/navigation";
 
 export default function Home() {

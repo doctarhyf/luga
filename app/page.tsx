@@ -17,14 +17,14 @@ export default function Home() {
   }
 
   function onStart() {
-    router.push("/home");
+    router.push("/lang");
   }
 
   return (
     <div className=" w-[100vw] md:w-[900px]">
       <div className=" h-[160pt] md:h-[320pt] relative overflow-hidden ">
-        <img src="/home.jpg" alt="my image" className="absolute  " />
-        <div className="w-full h-full bg-black/60 absolute "></div>
+        <img src="/home.jpg" alt="my image" className="absolute w-[100%]  " />
+        <div className="w-full h-full bg-black/40 absolute "></div>
 
         <div className="absolute gap-8 text-white mx-auto  p-8 text-xl md:text-3xl w-full ">
           <div className=" w-[90%] md:w-[50%] mx-auto text-center md:mt-4">
@@ -36,12 +36,16 @@ export default function Home() {
           </div>
 
           <div className="mx-auto w-full  text-center md:w-fit">
-            <button className="btn btn-secondary  ">
+            <button onClick={onStart} className="btn btn-secondary  ">
               Access all graded reading lessons
             </button>
           </div>
         </div>
       </div>
+
+      <div>Features</div>
+
+      <div>Small desc</div>
     </div>
   );
 }
