@@ -1,4 +1,6 @@
 import "./globals.css";
+
+import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -7,8 +9,43 @@ import Link from "next/link";
 import logo from "../public/luga.png";
 
 const inter = Inter({ subsets: ["latin"] });
-const rhyf: string =
-  "https://media.licdn.com/dms/image/C5603AQFEDr3QdwqfNA/profile-displayphoto-shrink_800_800/0/1517375232641?e=2147483647&v=beta&t=g59GObJu5EVgPaFR5T--1NmA6Fp949oJRiaoIsCe8EU";
+
+export function Header() {
+  return (
+    <div className=" main-header border-b ">
+      <div className=" max-w-[900px] mx-auto flex items-center justify-between p-4 ">
+        <div className="  w-fit font-bold text-xl ">
+          <Link href={"/"}>
+            <Image
+              alt="luga"
+              className=" object-contain -ml-20  h-[30pt]"
+              src={logo}
+            />
+          </Link>
+        </div>
+
+        <div>My Account</div>
+      </div>
+    </div>
+  );
+}
+
+export function Footer() {
+  return (
+    <div className="main-footer bg-black h-max text-white relative min-h-[120pt] ">
+      <div className="p-4 text-white flex flex-col md:flex-row gap-4">
+        {["Home", "Categories"].map((l, i) => (
+          <Link key={i} href={`/${l}`}>
+            {l}
+          </Link>
+        ))}
+      </div>
+      <div className="bg-neutral-800 text-sm text-neutral-400 p-4 absolute bottom-0 w-full">
+        © 2023 - Luga. All Rights Reserved.
+      </div>
+    </div>
+  );
+}
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,22 +60,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className=" border-b ">
-          <div className=" max-w-[900px] mx-auto flex items-center justify-between p-4 ">
-            <div className="  w-fit font-bold text-xl ">
-              <Link href={"/"}>
-                <Image
-                  alt="luga"
-                  className=" object-contain -ml-20  h-[30pt]"
-                  src={logo}
-                />
-              </Link>
-            </div>
-
-            <div>My Account</div>
+        <div className="min-h-[100vh] flex flex-col">
+          <Header />
+          <div className=" flex-grow main-cont p-4  max-w-[900px] mx-auto">
+            {children}
           </div>
+          <Footer />
         </div>
-        <div className="p-4  max-w-[900px] mx-auto">{children}</div>
       </body>
     </html>
   );

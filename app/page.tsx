@@ -22,7 +22,9 @@ export default function Home() {
 
   return (
     <main className="p-4 text-center">
-      <p className="text-[28pt] my-8">Je suis: / 我是:</p>
+      <p className="text-[18pt] my-8">
+        Tshakula langue/语言选择/choisir la langue
+      </p>
 
       <div className="  text-center  md:flex gap-4 justify-center">
         {Object.values(countries).map((country, i) => (
@@ -35,16 +37,18 @@ export default function Home() {
                 : ""
             } cursor-pointer border hover:border-sky-300 card mb-4 p-4 w-full bg-base-100 shadow-xl`}
           >
-            cool
-            <Image
-              className="mx-auto"
-              src={country.img}
-              width={120}
-              height={120}
-              alt="Picture of the author"
-            />
-            <div>{country.name}</div>
-            <div>{country.me}</div>
+            <div className="w-full mb-4 overflow-hidden  rounded-md h-[50pt] bg-red-500">
+              <Image
+                className=" rounded-md  mx-auto"
+                src={country.img}
+                width={120}
+                height={100}
+                alt="Picture of the author"
+              />
+            </div>
+
+            <div className="font-bold">{country.me}</div>
+            <div className="text-neutral-500 text-xs">{country.name}</div>
           </div>
         ))}
       </div>

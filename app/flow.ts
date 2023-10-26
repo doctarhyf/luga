@@ -70,7 +70,7 @@ export const countries: Record<string, Country> = {
   PRC: {
     id: 1,
     img: "/prc.png",
-    name: "People's Republic of China",
+    name: "PR. China",
     me: "中文",
     lang: "zh",
   },
