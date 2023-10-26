@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Category, Country, Word, categories, strings } from "../flow/flow";
+import { Category, Country, Word, categories, strings } from "../flow";
 import next from "../../public/next.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,15 +22,10 @@ function Home() {
 
   return (
     <div className="">
-      <div className="">
-        <input
-          type="text"
-          placeholder={strings[2][lang as keyof Word] + " ..."}
-          className="input input-bordered w-full md:max-w-xs "
-        />
+      <div className=" text-[28pt] my-8 text-amber-600 ">
+        {strings[3][lang as keyof Word]}
       </div>
-      <div className="my-4">{strings[3][lang as keyof Word]}</div>
-      <div className=" md:flex flex-wrap ">
+      <div className=" md:flex  ">
         {categories.map((cat, i) => (
           <Link key={i} href={"/words/?cat=" + cat.path}>
             <div className=" w-full md:w-fit flex-grow p-2 m-1 mb-4 cursor-pointer hover:bg-sky-500 hover:text-white border rounded-md">
