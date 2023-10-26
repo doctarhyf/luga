@@ -21,44 +21,27 @@ export default function Home() {
   }
 
   return (
-    <main className="p-4 text-center">
-      <p className="text-[18pt] my-8">
-        Tshakula langue/语言选择/choisir la langue
-      </p>
+    <div className=" w-[100vw] md:w-[900px]">
+      <div className=" h-[160pt] md:h-[320pt] relative overflow-hidden ">
+        <img src="/home.jpg" alt="my image" className="absolute  " />
+        <div className="w-full h-full bg-black/60 absolute "></div>
 
-      <div className="  text-center  md:flex gap-4 justify-center">
-        {Object.values(countries).map((country, i) => (
-          <div
-            onClick={(e) => onCardClicked(country)}
-            key={i}
-            className={` ${
-              country.id === selectedCountry.id
-                ? " border-sky-500 border bg-sky-500 text-white  "
-                : ""
-            } cursor-pointer border hover:border-sky-300 card mb-4 p-4 w-full bg-base-100 shadow-xl`}
-          >
-            <div className="w-full mb-4 overflow-hidden  rounded-md h-[50pt] bg-red-500">
-              <Image
-                className=" rounded-md  mx-auto"
-                src={country.img}
-                width={120}
-                height={100}
-                alt="Picture of the author"
-              />
-            </div>
-
-            <div className="font-bold">{country.me}</div>
-            <div className="text-neutral-500 text-xs">{country.name}</div>
+        <div className="absolute gap-8 text-white mx-auto  p-8 text-xl md:text-3xl w-full ">
+          <div className=" w-[90%] md:w-[50%] mx-auto text-center md:mt-4">
+            How to improve my Chinese reading and listening？
           </div>
-        ))}
-      </div>
 
-      <button
-        className="btn md:w-80 w-full btn-primary"
-        onClick={(e) => onStart()}
-      >
-        {strings[1][selectedCountry.lang as keyof Word]}
-      </button>
-    </main>
+          <div className=" my-2 md:my-8 text-xs text-transparent border-b-4 w-fit mx-auto border-pink-500">
+            coll
+          </div>
+
+          <div className="mx-auto w-full  text-center md:w-fit">
+            <button className="btn btn-secondary  ">
+              Access all graded reading lessons
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
