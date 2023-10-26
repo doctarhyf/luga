@@ -62,9 +62,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="min-h-[100vh] flex flex-col">
           <Header />
-          <div className=" flex-grow main-cont   max-w-[900px] mx-auto">
-            {children}
-          </div>
+          <div className=" flex-grow main-cont   ">{children}</div>
           <Footer />
         </div>
       </body>
