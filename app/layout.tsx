@@ -39,6 +39,7 @@ export function Footer() {
         {[
           { name: "Home", path: "/" },
           { name: "Categories", path: "/categories" },
+          { name: "Admin", path: "/admin" },
         ].map((l, i) => (
           <Link key={i} href={l.path}>
             {l.name}
