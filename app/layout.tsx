@@ -24,7 +24,9 @@ export function Header() {
           </Link>
         </div>
 
-        <div>My Account</div>
+        <div>
+          <Link href={"/sub"}>Login</Link>
+        </div>
       </div>
     </div>
   );
@@ -34,9 +36,12 @@ export function Footer() {
   return (
     <div className="main-footer bg-black h-max text-white relative min-h-[120pt] ">
       <div className=" max-w-[900px] mx-auto p-4 text-white flex flex-col md:flex-row gap-4">
-        {["Home", "Categories"].map((l, i) => (
-          <Link key={i} href={`/${l}`}>
-            {l}
+        {[
+          { name: "Home", path: "/" },
+          { name: "Categories", path: "/categories" },
+        ].map((l, i) => (
+          <Link key={i} href={l.path}>
+            {l.name}
           </Link>
         ))}
       </div>

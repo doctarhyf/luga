@@ -17,7 +17,7 @@ export default function Home() {
   }
 
   function onStart() {
-    router.push("/home");
+    router.push("/categories");
   }
 
   return (
