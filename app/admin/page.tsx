@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 
 const pinyins = [
   "ā ē ī ō ū ǖ Ā Ē Ī Ō Ū Ǖ",
@@ -8,55 +10,69 @@ const pinyins = [
   "a e i o u ü A E I O U Ü",
 ];
 
+function FormNewWord() {
+  return (
+    <div className=" items-center md:items-start gap-4 flex flex-col form-word">
+      <div>Insert new word or sentence</div>
+
+      <div>
+        <select className="select select-bordered w-full max-w-xs">
+          <option disabled selected>
+            Category
+          </option>
+          <option>Han Solo</option>
+          <option>Greedo</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <input
+        type="text"
+        placeholder="word category"
+        className="input input-bordered w-full max-w-xs"
+      />
+
+      <input
+        type="text"
+        placeholder="New word of phrase in chinese"
+        className="input input-bordered w-full max-w-xs"
+      />
+
+      <input
+        type="text"
+        placeholder="pinyin"
+        className="input input-bordered w-full max-w-xs"
+      />
+
+      <input
+        type="text"
+        placeholder="french meaning"
+        className="input input-bordered w-full max-w-xs"
+      />
+      <input
+        type="text"
+        placeholder="swahili"
+        className="input input-bordered w-full max-w-xs"
+      />
+
+      <button className="btn btn-primary md:w-full">SAVE</button>
+    </div>
+  );
+}
+
 function AdminPanel() {
+  const [worddata, setworddata] = useState({
+    cat: "",
+    zh: "",
+    fr: "",
+    sw: "",
+    py: "",
+  });
+
   return (
     <div className="mx-auto max-w-[900px]">
       <div className="flex flex-col-reverse md:flex-row justify-between p-4 ">
-        <div className=" items-center md:items-start gap-4 flex flex-col form-word">
-          <div>Insert new word or sentence</div>
-
-          <div>
-            <select className="select select-bordered w-full max-w-xs">
-              <option disabled selected>
-                Category
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <input
-            type="text"
-            placeholder="word category"
-            className="input input-bordered w-full max-w-xs"
-          />
-
-          <input
-            type="text"
-            placeholder="New word of phrase in chinese"
-            className="input input-bordered w-full max-w-xs"
-          />
-
-          <input
-            type="text"
-            placeholder="pinyin"
-            className="input input-bordered w-full max-w-xs"
-          />
-
-          <input
-            type="text"
-            placeholder="french meaning"
-            className="input input-bordered w-full max-w-xs"
-          />
-          <input
-            type="text"
-            placeholder="swahili"
-            className="input input-bordered w-full max-w-xs"
-          />
-
-          <button className="btn btn-primary md:w-full">SAVE</button>
-        </div>
+        <FormNewWord />
 
         <div className=" flex-grow p-8">
           <div className="flex items-center flex-col">
