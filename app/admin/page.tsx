@@ -111,16 +111,22 @@ function FormNewWord() {
         className="input input-bordered w-full max-w-xs"
       />
 
-      {worddata.cat !== "" &&
-        worddata.cat !== "Add new cat ..." &&
-        worddata.fr !== "" &&
-        worddata.py !== "" &&
-        worddata.sw !== "" &&
-        worddata.zh !== "" && (
-          <button onClick={onSaveNewWord} className="btn btn-primary md:w-full">
-            SAVE
-          </button>
-        )}
+      {
+        //test
+        worddata.cat !== "" &&
+          worddata.cat !== "Add new cat ..." &&
+          worddata.fr !== "" &&
+          worddata.py !== "" &&
+          worddata.sw !== "" &&
+          worddata.zh !== "" && (
+            <button
+              onClick={onSaveNewWord}
+              className="btn btn-primary md:w-full"
+            >
+              SAVE
+            </button>
+          )
+      }
     </div>
   );
 }
