@@ -12,21 +12,28 @@ const pinyins = [
 ];
 
 function FormNewWord() {
-  const [newcat, setnewcat] = useState("");
+  const [shownewcat, setshownewcat] = useState(false);
   const [worddata, setworddata] = useState({
     cat: "Category",
     zh: "chinois",
     fr: "french",
     sw: "swahili",
     py: "pinyin",
-  });
+  }); //cool
 
   function onSaveNewWord(e: any) {
     e;
     console.log(worddata);
   }
 
-  function onChangeWordCat(e: any) {}
+  function onChangeWordCat(e: any) {
+    let newcat = e.target.value;
+
+    setworddata((old) => ({ ...old, cat: e.target.value }));
+    setshownewcat(e.target.value === "Other");
+
+    setworddata((old) => ({ ...old, cat: "Add new cat ..." }));
+  }
 
   return (
     <div className=" items-center md:items-start gap-4 flex flex-col form-word">
@@ -48,16 +55,18 @@ function FormNewWord() {
         </select>
       </div>
 
-      <input
-        name="newcat"
-        onChange={(e) =>
-          setworddata((old) => ({ ...old, cat: e.target.value }))
-        }
-        value={newcat || ""}
-        type="text"
-        placeholder="New word of phrase in chinese"
-        className="input input-bordered w-full max-w-xs"
-      />
+      {shownewcat && (
+        <input
+          name="newcat"
+          onChange={(e) =>
+            setworddata((old) => ({ ...old, cat: e.target.value }))
+          }
+          value={worddata.cat || ""}
+          type="text"
+          placeholder="New cat"
+          className="input input-bordered w-full max-w-xs"
+        />
+      )}
 
       <input
         name="zh"
@@ -103,6 +112,7 @@ function FormNewWord() {
       />
 
       {worddata.cat !== "" &&
+        worddata.cat !== "Add new cat ..." &&
         worddata.fr !== "" &&
         worddata.py !== "" &&
         worddata.sw !== "" &&
