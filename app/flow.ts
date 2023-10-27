@@ -31,14 +31,24 @@ export const categories: Category[] = [
     path: "verb",
   },
   {
-    id: 2,
+    id: 3,
     name: { fr: "Bureau", zh: "办公室", sw: "Mu bureau" },
     pic: "/office.jpg",
     path: "office",
   },
   {
-    id: 2,
+    id: 4,
     name: { fr: "Magasin", zh: "库房", sw: "Ku magasin" },
+    pic: "/wh.jpg",
+    path: "wh",
+  },
+  {
+    id: 4,
+    name: {
+      fr: "Mots popuplaire",
+      zh: "youming ciyu",
+      sw: "Ma mots populaire",
+    },
     pic: "/wh.jpg",
     path: "wh",
   },

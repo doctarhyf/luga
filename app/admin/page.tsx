@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { categories } from "../flow";
 
 const pinyins = [
   "ā ē ī ō ū ǖ Ā Ē Ī Ō Ū Ǖ",
@@ -11,15 +12,36 @@ const pinyins = [
 ];
 
 function FormNewWord() {
+  const [newcat, setnewcat] = useState("");
+  const [worddata, setworddata] = useState({
+    cat: "Category",
+    zh: "chinois",
+    fr: "french",
+    sw: "swahili",
+    py: "pinyin",
+  });
+
+  function onSaveNewWord(e: any) {
+    e;
+    console.log(worddata);
+  }
+
+  function onChangeWordCat(e: any) {}
+
   return (
     <div className=" items-center md:items-start gap-4 flex flex-col form-word">
-      <div>Insert new word or sentence</div>
+      <div className="text-xl border-t">Insert new word or sentence</div>
 
       <div>
-        <select className="select select-bordered w-full max-w-xs">
+        <select
+          onChange={onChangeWordCat}
+          value={worddata.cat || ""}
+          className="select select-bordered w-full max-w-xs"
+        >
           <option disabled selected>
             Category
           </option>
+          <option>Category</option>
           <option>Han Solo</option>
           <option>Greedo</option>
           <option>Other</option>
@@ -27,48 +49,73 @@ function FormNewWord() {
       </div>
 
       <input
-        type="text"
-        placeholder="word category"
-        className="input input-bordered w-full max-w-xs"
-      />
-
-      <input
+        name="newcat"
+        onChange={(e) =>
+          setworddata((old) => ({ ...old, cat: e.target.value }))
+        }
+        value={newcat || ""}
         type="text"
         placeholder="New word of phrase in chinese"
         className="input input-bordered w-full max-w-xs"
       />
 
       <input
+        name="zh"
+        onChange={(e) =>
+          setworddata((old) => ({ ...old, [e.target.name]: e.target.value }))
+        }
+        value={worddata.zh || ""}
+        type="text"
+        placeholder="New word of phrase in chinese"
+        className="input input-bordered w-full max-w-xs"
+      />
+
+      <input
+        name="py"
+        onChange={(e) =>
+          setworddata((old) => ({ ...old, [e.target.name]: e.target.value }))
+        }
+        value={worddata.py || ""}
         type="text"
         placeholder="pinyin"
         className="input input-bordered w-full max-w-xs"
       />
 
       <input
+        name="fr"
+        onChange={(e) =>
+          setworddata((old) => ({ ...old, [e.target.name]: e.target.value }))
+        }
+        value={worddata.fr || ""}
         type="text"
         placeholder="french meaning"
         className="input input-bordered w-full max-w-xs"
       />
       <input
+        name="sw"
+        onChange={(e) =>
+          setworddata((old) => ({ ...old, [e.target.name]: e.target.value }))
+        }
+        value={worddata.sw || ""}
         type="text"
         placeholder="swahili"
         className="input input-bordered w-full max-w-xs"
       />
 
-      <button className="btn btn-primary md:w-full">SAVE</button>
+      {worddata.cat !== "" &&
+        worddata.fr !== "" &&
+        worddata.py !== "" &&
+        worddata.sw !== "" &&
+        worddata.zh !== "" && (
+          <button onClick={onSaveNewWord} className="btn btn-primary md:w-full">
+            SAVE
+          </button>
+        )}
     </div>
   );
 }
 
 function AdminPanel() {
-  const [worddata, setworddata] = useState({
-    cat: "",
-    zh: "",
-    fr: "",
-    sw: "",
-    py: "",
-  });
-
   return (
     <div className="mx-auto max-w-[900px]">
       <div className="flex flex-col-reverse md:flex-row justify-between p-4 ">
