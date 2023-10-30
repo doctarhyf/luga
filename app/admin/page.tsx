@@ -15,6 +15,7 @@ function AdminPanel() {
     Record<string, string> | {}
   >();
   const [cat, selectedCat] = useState(categories);
+  const [editingWord, seteditingWord] = useState(false);
 
   return (
     <div className="mx-auto max-w-[900px]">
@@ -35,6 +36,9 @@ function AdminPanel() {
                 className="input input-bordered w-full"
               />
             </div>
+
+            <button className="p-4 btn btn-primary mb-4">NEW CATEGORY</button>
+
             {categories.map((item: Category, i) => (
               <button
                 key={i}
@@ -53,9 +57,15 @@ function AdminPanel() {
               <input
                 type="text"
                 placeholder="Search word"
-                className="input input-bordered w-full w-full"
+                className="input input-bordered w-full"
               />
             </div>
+            <button
+              onClick={(e) => seteditingWord(!editingWord)}
+              className="p-4 btn btn-primary mb-4"
+            >
+              NEW Word
+            </button>
             {Words.map((item: Word, i) => (
               <button
                 key={i}
@@ -69,7 +79,8 @@ function AdminPanel() {
 
         <details className=" md:w-[30%]" open>
           <summary>Word</summary>
-          <div className="  ">
+
+          {!editingWord && (
             <div className="flex items-center flex-col">
               <div className="text-[32pt] font-black bg-gradient-to-r bg-clip-text text-transparent from-purple-500 to-blue-500">
                 汉语拼音
@@ -77,14 +88,14 @@ function AdminPanel() {
               <div className=" text-neutral-400 ">Hànyǔ pīnyīn</div>
 
               <div className="flex gap-4 flex-col mt-4 ">
-                <div className="flex">
+                <div className="flex gap-4">
                   <div>
                     <Image alt="rdc" src={"/drc.png"} width={30} height={30} />
                   </div>
                   <div>French</div>
                 </div>
 
-                <div className="flex">
+                <div className="flex gap-4">
                   <div>
                     <Image alt="prc" src={"/prc.png"} width={30} height={30} />
                   </div>
@@ -92,7 +103,11 @@ function AdminPanel() {
                 </div>
               </div>
             </div>
-          </div>
+          )}
+
+          {!editingWord && (
+            <div className="flex items-center flex-col">editing</div>
+          )}
         </details>
       </div>
     </div>
