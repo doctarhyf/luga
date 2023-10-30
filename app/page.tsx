@@ -1,18 +1,12 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
-import { countries, Country, strings, Word } from "./flow";
+import { countries, strings } from "./flow";
 import { useRouter } from "next/navigation";
+import ButtonStart from "./components/ButtonStart";
+import { Country, IFeature } from "./types";
+import { useState } from "react";
 
-interface Feature {
-  title: string;
-  desc: string;
-  img: string;
-  big: boolean;
-  btn: string;
-}
-
-const features: Feature[] = [
+const features: IFeature[] = [
   {
     title: "Free access",
     desc: "All graded reading lessons are free to learn and practice.",
@@ -72,10 +66,6 @@ const features: Feature[] = [
 ];
 
 function MainSplash() {
-  const router = useRouter();
-  function onStart() {
-    router.push("/lang");
-  }
   return (
     <div className=" h-[320pt] relative overflow-hidden ">
       <div className="bg-green-500 w-full h-full absolute ">
@@ -103,9 +93,7 @@ function MainSplash() {
         </div>
 
         <div className="mx-auto w-full mt-8 text-center md:w-fit">
-          <button onClick={onStart} className="btn btn-secondary  ">
-            Access all graded reading lessons
-          </button>
+          <ButtonStart />
         </div>
       </div>
     </div>

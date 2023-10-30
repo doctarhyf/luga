@@ -1,15 +1,4 @@
-export interface Word {
-  fr: string;
-  sw: string;
-  zh: string;
-}
-
-export interface Category {
-  id: number;
-  name: Record<string, string>;
-  pic: string;
-  path: string;
-}
+import { Category, Country, IRoute, Word } from "./types";
 
 export const categories: Category[] = [
   {
@@ -66,14 +55,6 @@ export const strings: Word[] = [
   },
 ];
 
-export type Country = {
-  id: number;
-  img: string;
-  name: string;
-  me: string;
-  lang: string;
-};
-
 export const countries: Record<string, Country> = {
   DRC: {
     id: 0,
@@ -100,14 +81,10 @@ export const countries: Record<string, Country> = {
 
 export const clPage = "w-[900px]  mx-auto p-4";
 
-interface IRoute {
-  label: string;
-  path: string;
-}
-
 export const ROUTES: Record<string, IRoute> = {
   ROOT: { label: "", path: "/" },
   HOME: { label: "Home", path: "/home" },
   LOGIN: { label: "Login", path: "/login" },
   SUBSCRIPTION: { label: "Subscription", path: "/sub" },
+  LANG: { label: "Language", path: "/lang" },
 };

@@ -4,11 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-async function onAction(formData: FormData) {
-  // "use server";
-  console.log(formData);
-}
-
 function Login() {
   return (
     <div className={clPage}>
