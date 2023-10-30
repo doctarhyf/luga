@@ -3,16 +3,16 @@ import Image from "next/image";
 import { useState } from "react";
 import { countries, strings } from "../flow";
 import { useRouter } from "next/navigation";
-import { Country, Word } from "../types";
+import { ICountry, IWord } from "../types";
 
 export default function Home() {
-  const [selectedCountry, setSelectedCountry]: [Country, any] = useState(
+  const [selectedCountry, setSelectedCountry]: [ICountry, any] = useState(
     countries.DRC
   );
 
   const router = useRouter();
 
-  function onCardClicked(country: Country) {
+  function onCardClicked(country: ICountry) {
     setSelectedCountry(country);
     localStorage.setItem("CT", JSON.stringify(country));
   }
@@ -58,7 +58,7 @@ export default function Home() {
         className="btn md:w-80 w-full btn-primary"
         onClick={(e) => onStart()}
       >
-        {strings[1][selectedCountry.lang as keyof Word]}
+        {strings[1][selectedCountry.lang as keyof IWord]}
       </button>
     </main>
   );

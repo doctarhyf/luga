@@ -4,7 +4,7 @@ import { categories, strings } from "../flow";
 import next from "../../public/next.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { Country, Word } from "../types";
+import { ICountry, IWord } from "../types";
 
 function Home() {
   const [lang, setlang] = useState("fr");
@@ -14,7 +14,7 @@ function Home() {
     if (countryString === null) {
       setlang("fr");
     } else {
-      const country: Country = JSON.parse(countryString);
+      const country: ICountry = JSON.parse(countryString);
       console.log(country);
       setlang(country.lang);
     }
@@ -25,10 +25,10 @@ function Home() {
     <div className="max-w-[900px] mx-auto">
       <div className="border-b mb-4">
         <div className="  text-[28pt] my-4 text-amber-600 ">
-          {strings[3][lang as keyof Word]}
+          {strings[3][lang as keyof IWord]}
         </div>
         <div className="   my-4 text-neutral-500 ">
-          {strings[4][lang as keyof Word]}
+          {strings[4][lang as keyof IWord]}
         </div>
       </div>
       <div className=" md:flex  ">

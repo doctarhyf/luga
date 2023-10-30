@@ -1,29 +1,30 @@
 import { Interface } from "readline";
 
-export type ISubItem = {
+export interface ISubItem {
   label: string;
   sub: string;
   oldPrice: string;
   price: string;
   note: string;
-};
+}
 
-export type Country = {
+export interface ICountry {
   id: number;
   img: string;
   name: string;
   me: string;
   lang: string;
-};
+}
 
-export interface Word {
+export interface IWord {
+  id?: number;
   fr: string;
   sw: string;
   zh: string;
   py?: string;
 }
 
-export interface Category {
+export interface ICategory {
   id: number;
   name: Record<string, string>;
   pic: string;

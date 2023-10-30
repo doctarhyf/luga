@@ -1,6 +1,6 @@
-import { Category, Country, IRoute, Word } from "./types";
+import { ICategory, ICountry, IRoute, IWord } from "./types";
 
-export const categories: Category[] = [
+export const categories: ICategory[] = [
   {
     id: 0,
     name: { fr: "Cimenterie", zh: "水泥车间", sw: "Atelier ya ciment" },
@@ -43,7 +43,7 @@ export const categories: Category[] = [
   },
 ];
 
-export const strings: Word[] = [
+export const strings: IWord[] = [
   { fr: "Bonjour", sw: "Ni dje?", zh: "你好" },
   { fr: "Demarrer", sw: "Anza", zh: "开始" },
   { fr: "Rechercher", sw: "Mina tafuta ...", zh: "搜索" },
@@ -55,7 +55,7 @@ export const strings: Word[] = [
   },
 ];
 
-export const countries: Record<string, Country> = {
+export const countries: Record<string, ICountry> = {
   DRC: {
     id: 0,
     img: "/drc.png",

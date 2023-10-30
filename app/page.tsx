@@ -3,7 +3,7 @@ import Image from "next/image";
 import { countries, strings } from "./flow";
 import { useRouter } from "next/navigation";
 import ButtonStart from "./components/ButtonStart";
-import { Country, IFeature } from "./types";
+import { ICountry, IFeature } from "./types";
 import { useState } from "react";
 
 const features: IFeature[] = [
@@ -101,7 +101,7 @@ function MainSplash() {
 }
 
 export default function Home() {
-  const [selectedCountry, setSelectedCountry]: [Country, any] = useState(
+  const [selectedCountry, setSelectedCountry]: [ICountry, any] = useState(
     countries.DRC
   );
 
@@ -110,7 +110,7 @@ export default function Home() {
     router.push("/lang");
   }
 
-  function onCardClicked(country: Country) {
+  function onCardClicked(country: ICountry) {
     setSelectedCountry(country);
     localStorage.setItem("CT", JSON.stringify(country));
   }

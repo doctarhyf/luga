@@ -4,10 +4,10 @@ import { ROUTES, categories } from "../flow";
 import FormNewWord from "./componemts/FormNewWord";
 import PinyinKB from "./componemts/PinyinKB";
 import Link from "next/link";
-import { Category, Word } from "../types";
+import { ICategory, IWord } from "../types";
 import Image from "next/image";
 
-const Words: Word[] = [{ zh: "Nihao", fr: "nihao", sw: "jambo", py: "nihao" }];
+const Words: IWord[] = [{ zh: "Nihao", fr: "nihao", sw: "jambo", py: "nihao" }];
 
 const enum GUI_STATE {
   IDLE = 0,
@@ -24,6 +24,8 @@ function AdminPanel() {
   //const [editingWord, seteditingWord] = useState(false);
   const [loading, setloading] = useState(true);
   const [guimode, setguimode] = useState(GUI_STATE.IDLE);
+  const [newcatdata, setnewcatdata] = useState<ICategory | null>(null);
+  const [newworddata, setnewworddata] = useState<IWord | null>(null);
 
   return (
     <div className="mx-auto max-w-[900px]">
@@ -33,7 +35,7 @@ function AdminPanel() {
       <div className="flex flex-col md:flex-row justify-between p-4 "></div> */}
 
       <div className="flex flex-col md:flex-row justify-between p-4 ">
-        <details className=" md:w-[30%]" open>
+        <details className=" md:w-[30%]">
           <summary>Catrgories</summary>
 
           <div className="   ">
@@ -53,20 +55,42 @@ function AdminPanel() {
                 >
                   NEW CATEGORY
                 </button>
-                {categories.map((item: Category, i) => (
+                {categories.map((item: ICategory, i) => (
                   <button
                     key={i}
                     className="p-2 block w-full text-start border rounded-md cursor-pointer mb-2 hover:text-white hover:bg-orange-600 "
                   >
                     {item.name.fr}
                   </button>
-                ))}{" "}
+                ))}
               </>
             )}
 
             {guimode === GUI_STATE.EDITING_CATEGORY && (
               <>
                 <div className="flex items-center flex-col">
+                  <div className="pb-4 ">
+                    <input
+                      name="zh"
+                      type="text"
+                      placeholder="Hanzi"
+                      className="input input-bordered w-full"
+                    />
+                  </div>
+                  <div className="pb-4 ">
+                    <input
+                      type="text"
+                      placeholder="Search word"
+                      className="input input-bordered w-full"
+                    />
+                  </div>
+                  <div className="pb-4 ">
+                    <input
+                      type="text"
+                      placeholder="Search word"
+                      className="input input-bordered w-full"
+                    />
+                  </div>
                   <div className="pb-4 ">
                     <input
                       type="text"
@@ -77,6 +101,7 @@ function AdminPanel() {
                 </div>
                 <div>
                   <button className="btn btn-primary">SAVE</button>
+
                   <button
                     onClick={(e) => setguimode(GUI_STATE.IDLE)}
                     className="btn btn-warning"
@@ -92,7 +117,7 @@ function AdminPanel() {
           </div>
         </details>
 
-        <details className=" md:w-[30%]" open>
+        <details className=" md:w-[30%]">
           <summary>Words List</summary>
           <div className="  ">
             <div className="pb-4 border-b mb-4">
@@ -110,7 +135,7 @@ function AdminPanel() {
                 NEW Word
               </button>
             )}
-            {Words.map((item: Word, i) => (
+            {Words.map((item: IWord, i) => (
               <button
                 key={i}
                 className="p-2 block w-full text-start border rounded-md cursor-pointer mb-2 hover:text-white hover:bg-orange-600 "
@@ -121,7 +146,7 @@ function AdminPanel() {
           </div>
         </details>
 
-        <details className=" md:w-[30%]" open>
+        <details className=" md:w-[30%]">
           <summary>Word</summary>
 
           {guimode !== GUI_STATE.EDITING_WORD && (
