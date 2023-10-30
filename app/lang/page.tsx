@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import { countries, Country, strings, Word } from "../flow";
+import { countries, strings } from "../flow";
 import { useRouter } from "next/navigation";
+import { Country, Word } from "../types";
 
 export default function Home() {
   const [selectedCountry, setSelectedCountry]: [Country, any] = useState(
