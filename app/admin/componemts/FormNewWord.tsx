@@ -18,33 +18,47 @@ export default function FormNewWord() {
   }
 
   function onChangeWordCat(e: any) {
-    let newcat = e.target.value;
+    /*  let newcat = e.target.value;
 
     setworddata((old) => ({ ...old, cat: e.target.value }));
     setshownewcat(e.target.value === "Other");
 
-    setworddata((old) => ({ ...old, cat: "Add new cat ..." }));
+    setworddata((old) => ({ ...old, cat: "Add new cat ..." })); */
   }
 
   return (
     <div className=" items-center md:items-start gap-4 flex flex-col form-word">
       <div className="text-xl border-t">Insert new word or sentence</div>
 
-      <div>
-        <select
-          onChange={onChangeWordCat}
-          value={worddata.cat || ""}
-          className="select select-bordered w-full max-w-xs"
-        >
-          <option disabled selected>
-            Category
-          </option>
-          <option>Category</option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
-          <option>Other</option>
-        </select>
+      <div className="form-control">
+        <label className="label cursor-pointer">
+          <span className="label-text">Remember me</span>
+          <input
+            type="checkbox"
+            className="toggle"
+            onChange={(e) => setshownewcat(e.target.checked)}
+            checked={shownewcat}
+          />
+        </label>
       </div>
+
+      {shownewcat && (
+        <div>
+          <select
+            onChange={onChangeWordCat}
+            value={worddata.cat || ""}
+            className="select select-bordered w-full max-w-xs"
+          >
+            <option disabled selected>
+              Category
+            </option>
+            <option>Category</option>
+            <option>Han Solo</option>
+            <option>Greedo</option>
+            <option>Other</option>
+          </select>
+        </div>
+      )}
 
       {shownewcat && (
         <input

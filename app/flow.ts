@@ -97,3 +97,17 @@ export const countries: Record<string, Country> = {
     lang: "fr",
   },
 };
+
+export const clPage = "w-[900px]  mx-auto p-4";
+
+interface IRoute {
+  label: string;
+  path: string;
+}
+
+export const ROUTES: Record<string, IRoute> = {
+  ROOT: { label: "", path: "/" },
+  HOME: { label: "Home", path: "/home" },
+  LOGIN: { label: "Login", path: "/login" },
+  SUBSCRIPTION: { label: "Subscription", path: "/sub" },
+};

@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import logo from "../public/luga.png";
+import { ROUTES } from "./flow";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,7 @@ export function Header() {
     <div className=" main-header border-b ">
       <div className=" max-w-[900px] mx-auto flex items-center justify-between p-4 ">
         <div className="  w-fit font-bold text-xl ">
-          <Link href={"/"}>
+          <Link href={ROUTES.ROOT.path}>
             <Image
               alt="luga"
               className=" object-contain -ml-20  h-[30pt]"
@@ -25,7 +26,7 @@ export function Header() {
         </div>
 
         <div>
-          <Link href={"/sub"}>Login</Link>
+          <Link href={ROUTES.LOGIN.path}>{ROUTES.LOGIN.label}</Link>
         </div>
       </div>
     </div>
