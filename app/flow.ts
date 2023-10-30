@@ -79,12 +79,14 @@ export const countries: Record<string, Country> = {
   },
 };
 
-export const clPage = "w-[900px]  mx-auto p-4";
+export const clPage = "max-w-[900px]  mx-auto p-4";
 
 export const ROUTES: Record<string, IRoute> = {
   ROOT: { label: "", path: "/" },
   HOME: { label: "Home", path: "/home" },
-  LOGIN: { label: "Login", path: "/login" },
+  LOGIN: { label: "Login", path: "/auth/login" },
+  RECOVER: { label: "Recover password", path: "/auth/recover" },
   SUBSCRIPTION: { label: "Subscription", path: "/sub" },
   LANG: { label: "Language", path: "/lang" },
+  ADMIN: { label: "Admin", path: "/admin" },
 };

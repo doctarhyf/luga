@@ -1,54 +1,99 @@
-import React, { useState } from "react";
-import { categories } from "../flow";
+"use client";
+import React, { ReactNode, useState } from "react";
+import { ROUTES, categories } from "../flow";
 import FormNewWord from "./componemts/FormNewWord";
+import PinyinKB from "./componemts/PinyinKB";
+import Link from "next/link";
+import { Category, Word } from "../types";
+import Image from "next/image";
 
-const pinyins = [
-  "ā ē ī ō ū ǖ Ā Ē Ī Ō Ū Ǖ",
-  "á é í ó ú ǘ Á É Í Ó Ú Ǘ",
-  "ǎ ě ǐ ǒ ǔ ǚ Ǎ Ě Ǐ Ǒ Ǔ Ǚ",
-  "à è ì ò ù ǜ À È Ì Ò Ù Ǜ",
-  "a e i o u ü A E I O U Ü",
-];
+const Words: Word[] = [{ zh: "Nihao", fr: "nihao", sw: "jambo", py: "nihao" }];
 
 function AdminPanel() {
+  const [wordsList, setwordsList] = useState<Record<string, string> | []>();
+  const [selectedWord, setselectedWord] = useState<
+    Record<string, string> | {}
+  >();
+  const [cat, selectedCat] = useState(categories);
+
   return (
     <div className="mx-auto max-w-[900px]">
-      <div className="flex flex-col-reverse md:flex-row justify-between p-4 ">
-        <FormNewWord />
+      {/*  <div className="flex flex-col-reverse md:flex-row justify-between p-4 "></div>
+      <FormNewWord />}
+      <PinyinKB />}
+      <div className="flex flex-col md:flex-row justify-between p-4 "></div> */}
 
-        <div className=" flex-grow p-8">
-          <div className="flex items-center flex-col">
-            <div className="text-[32pt] font-black bg-gradient-to-r bg-clip-text text-transparent from-purple-500 to-blue-500">
-              汉语拼音
-            </div>
-            <div className=" text-neutral-400 ">Hànyǔ pīnyīn</div>
-            <div>
-              <label className="cursor-pointer label">
-                <span className="label-text">Show pinyin keyboard </span>
-                <input
-                  type="checkbox"
-                  className="toggle toggle-primary"
-                  checked
-                />
-              </label>
-            </div>
+      <div className="flex flex-col md:flex-row justify-between p-4 ">
+        <details className=" md:w-[30%]" open>
+          <summary>Catrgories</summary>
 
-            <div>
-              {pinyins.map((accent, i) => (
-                <div key={i}>
-                  {accent.split(" ").map((lt, i) => (
-                    <button
-                      key={lt}
-                      className=" hover:bg-sky-500 focus:bg-sky-300 hover:text-white kbd text-sm m-1"
-                    >
-                      {lt}
-                    </button>
-                  ))}
+          <div className="   ">
+            <div className="pb-4 border-b mb-4">
+              <input
+                type="text"
+                placeholder="Search Cat"
+                className="input input-bordered w-full"
+              />
+            </div>
+            {categories.map((item: Category, i) => (
+              <button
+                key={i}
+                className="p-2 block w-full text-start border rounded-md cursor-pointer mb-2 hover:text-white hover:bg-orange-600 "
+              >
+                {item.name.fr}
+              </button>
+            ))}
+          </div>
+        </details>
+
+        <details className=" md:w-[30%]" open>
+          <summary>Words List</summary>
+          <div className="  ">
+            <div className="pb-4 border-b mb-4">
+              <input
+                type="text"
+                placeholder="Search word"
+                className="input input-bordered w-full w-full"
+              />
+            </div>
+            {Words.map((item: Word, i) => (
+              <button
+                key={i}
+                className="p-2 block w-full text-start border rounded-md cursor-pointer mb-2 hover:text-white hover:bg-orange-600 "
+              >
+                {item.fr}
+              </button>
+            ))}
+          </div>
+        </details>
+
+        <details className=" md:w-[30%]" open>
+          <summary>Word</summary>
+          <div className="  ">
+            <div className="flex items-center flex-col">
+              <div className="text-[32pt] font-black bg-gradient-to-r bg-clip-text text-transparent from-purple-500 to-blue-500">
+                汉语拼音
+              </div>
+              <div className=" text-neutral-400 ">Hànyǔ pīnyīn</div>
+
+              <div className="flex gap-4 flex-col mt-4 ">
+                <div className="flex">
+                  <div>
+                    <Image alt="rdc" src={"/drc.png"} width={30} height={30} />
+                  </div>
+                  <div>French</div>
                 </div>
-              ))}
+
+                <div className="flex">
+                  <div>
+                    <Image alt="prc" src={"/prc.png"} width={30} height={30} />
+                  </div>
+                  <div>French</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </details>
       </div>
     </div>
   );

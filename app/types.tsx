@@ -20,6 +20,7 @@ export interface Word {
   fr: string;
   sw: string;
   zh: string;
+  py?: string;
 }
 
 export interface Category {

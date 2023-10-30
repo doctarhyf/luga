@@ -1,5 +1,5 @@
 import React from "react";
-import { ROUTES, clPage } from "../flow";
+import { ROUTES, clPage } from "../../flow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
@@ -48,7 +48,7 @@ function Login() {
           <button className="btn btn-primary">LOGIN</button>
           <div className="flex justify-center gap-4 text-sm">
             <Link href={ROUTES.SUBSCRIPTION.path}>Register</Link> |{" "}
-            <Link href={"/"}>Lost your password?</Link>
+            <Link href={ROUTES.RECOVER.path}>Lost your password?</Link>
           </div>
         </form>
       </div>
