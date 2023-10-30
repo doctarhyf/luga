@@ -1,9 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Category, Country, Word, categories, strings } from "../flow";
+import { categories, strings } from "../flow";
 import next from "../../public/next.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { Country, Word } from "../types";
 
 function Home() {
   const [lang, setlang] = useState("fr");
