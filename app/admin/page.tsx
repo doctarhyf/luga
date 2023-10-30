@@ -9,13 +9,21 @@ import Image from "next/image";
 
 const Words: Word[] = [{ zh: "Nihao", fr: "nihao", sw: "jambo", py: "nihao" }];
 
+const enum GUI_STATE {
+  IDLE = 0,
+  EDITING_WORD,
+  EDITING_CATEGORY,
+}
+
 function AdminPanel() {
   const [wordsList, setwordsList] = useState<Record<string, string> | []>();
   const [selectedWord, setselectedWord] = useState<
     Record<string, string> | {}
   >();
   const [cat, selectedCat] = useState(categories);
-  const [editingWord, seteditingWord] = useState(false);
+  //const [editingWord, seteditingWord] = useState(false);
+  const [loading, setloading] = useState(true);
+  const [guimode, setguimode] = useState(GUI_STATE.IDLE);
 
   return (
     <div className="mx-auto max-w-[900px]">
@@ -37,16 +45,50 @@ function AdminPanel() {
               />
             </div>
 
-            <button className="p-4 btn btn-primary mb-4">NEW CATEGORY</button>
+            {guimode !== GUI_STATE.EDITING_CATEGORY && (
+              <>
+                <button
+                  onClick={(e) => setguimode(GUI_STATE.EDITING_CATEGORY)}
+                  className="p-4 btn btn-primary mb-4"
+                >
+                  NEW CATEGORY
+                </button>
+                {categories.map((item: Category, i) => (
+                  <button
+                    key={i}
+                    className="p-2 block w-full text-start border rounded-md cursor-pointer mb-2 hover:text-white hover:bg-orange-600 "
+                  >
+                    {item.name.fr}
+                  </button>
+                ))}{" "}
+              </>
+            )}
 
-            {categories.map((item: Category, i) => (
-              <button
-                key={i}
-                className="p-2 block w-full text-start border rounded-md cursor-pointer mb-2 hover:text-white hover:bg-orange-600 "
-              >
-                {item.name.fr}
-              </button>
-            ))}
+            {guimode === GUI_STATE.EDITING_CATEGORY && (
+              <>
+                <div className="flex items-center flex-col">
+                  <div className="pb-4 ">
+                    <input
+                      type="text"
+                      placeholder="Search word"
+                      className="input input-bordered w-full"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <button className="btn btn-primary">SAVE</button>
+                  <button
+                    onClick={(e) => setguimode(GUI_STATE.IDLE)}
+                    className="btn btn-warning"
+                  >
+                    Cancel
+                  </button>
+                </div>{" "}
+                {loading && (
+                  <progress className="progress w-56 progress-error"></progress>
+                )}
+              </>
+            )}
           </div>
         </details>
 
@@ -60,12 +102,14 @@ function AdminPanel() {
                 className="input input-bordered w-full"
               />
             </div>
-            <button
-              onClick={(e) => seteditingWord(!editingWord)}
-              className="p-4 btn btn-primary mb-4"
-            >
-              NEW Word
-            </button>
+            {guimode === GUI_STATE.IDLE && (
+              <button
+                onClick={(e) => setguimode(GUI_STATE.EDITING_WORD)}
+                className="p-4 btn btn-primary mb-4"
+              >
+                NEW Word
+              </button>
+            )}
             {Words.map((item: Word, i) => (
               <button
                 key={i}
@@ -80,7 +124,7 @@ function AdminPanel() {
         <details className=" md:w-[30%]" open>
           <summary>Word</summary>
 
-          {!editingWord && (
+          {guimode !== GUI_STATE.EDITING_WORD && (
             <div className="flex items-center flex-col">
               <div className="text-[32pt] font-black bg-gradient-to-r bg-clip-text text-transparent from-purple-500 to-blue-500">
                 汉语拼音
@@ -105,8 +149,54 @@ function AdminPanel() {
             </div>
           )}
 
-          {!editingWord && (
-            <div className="flex items-center flex-col">editing</div>
+          {guimode === GUI_STATE.EDITING_WORD && (
+            <>
+              <select className="select select-bordered w-full max-w-xs">
+                <option disabled selected>
+                  Category
+                </option>
+                <option>Han Solo</option>
+                <option>Greedo</option>
+              </select>
+
+              <div className="flex items-center flex-col">
+                <div className="pb-4 ">
+                  <input
+                    type="text"
+                    placeholder="Search word"
+                    className="input input-bordered w-full"
+                  />
+                </div>
+                <div className="pb-4 ">
+                  <input
+                    type="text"
+                    placeholder="Search word"
+                    className="input input-bordered w-full"
+                  />
+                </div>
+                <div className="pb-4 ">
+                  <input
+                    type="text"
+                    placeholder="Search word"
+                    className="input input-bordered w-full"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <button className="btn btn-primary">SAVE</button>
+                <button
+                  onClick={(e) => setguimode(GUI_STATE.IDLE)}
+                  className="btn btn-warning"
+                >
+                  Cancel
+                </button>
+              </div>
+
+              {loading && (
+                <progress className="progress w-56 progress-error"></progress>
+              )}
+            </>
           )}
         </details>
       </div>
