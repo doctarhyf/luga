@@ -64,8 +64,8 @@ export default function Home({ searchParams }: { searchParams: any }) {
       </div>
 
       <Link
-        href={ROUTES.CATEGORIES.path}
-        className="btn md:w-80 w-full btn-primary"
+        href={`${ROUTES.CATEGORIES.path}?lang=${selectedLang}`}
+        className=" btn-demarrer- btn md:w-80 w-full btn-primary"
         /*  onClick={(e) => onStart()} */
       >
         {strings[1][selectedLang as keyof IWord]}

@@ -1,39 +1,30 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { categories, strings } from "../flow";
+import React from "react";
+import { LANG_DEFAULT, categories, strings } from "../flow";
 import next from "../../public/next.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { ICountry, IWord } from "../types";
 
-function Home() {
-  const [lang, setlang] = useState("fr");
-
-  useEffect(() => {
-    let countryString = localStorage.getItem("CT");
-    if (countryString === null) {
-      setlang("fr");
-    } else {
-      const country: ICountry = JSON.parse(countryString);
-      console.log(country);
-      setlang(country.lang);
-    }
-    console.log(countryString);
-  }, []);
+function Home({ searchParams }: { searchParams: any }) {
+  const { lang } = searchParams;
+  const selectedLang: string = lang === undefined ? LANG_DEFAULT.symbol : lang;
 
   return (
     <div className="max-w-[900px] mx-auto">
       <div className="border-b mb-4">
         <div className="  text-[28pt] my-4 text-amber-600 ">
-          {strings[3][lang as keyof IWord]}
+          {strings[3][selectedLang as keyof IWord]}
         </div>
         <div className="   my-4 text-neutral-500 ">
-          {strings[4][lang as keyof IWord]}
+          {strings[4][selectedLang as keyof IWord]}
         </div>
       </div>
       <div className=" md:flex  ">
         {categories.map((cat, i) => (
-          <Link key={i} href={"/words/?cat=" + cat.path}>
+          <Link
+            key={i}
+            href={`/words/?cat=" + cat.path + '&lang=${selectedLang}`}
+          >
             <div className=" w-full md:w-fit flex-grow p-2 m-1 mb-4 cursor-pointer hover:bg-sky-500 hover:text-white border rounded-md">
               <div className=" ">
                 <div className="bg-red-500">
@@ -46,7 +37,7 @@ function Home() {
                   />
                 </div>
                 <div className="text-lg my-2  group-hover:text-white ">
-                  {cat.name[lang]}
+                  {cat.name[selectedLang]}
                 </div>
               </div>
             </div>
