@@ -41,11 +41,11 @@ async function WordsList({ searchParams }: { searchParams: any }) {
         <div>Please select a category to continue</div>
         <div>
           {categories.map((w, i) => (
-            <Link
-              href={`?cat=${w.path}&lang=${selectedLang}`}
-              className="btn btn-success"
-            >
-              {w.name.fr}
+            <Link key={i} href={`?cat=${w.path}&lang=${selectedLang}`}>
+              <div className=" p-1 px-4 rounded-full my-1 hover:bg-orange-400 hover:text-white border inline-block mx-2 ">
+                {" "}
+                {w.name.fr}
+              </div>
             </Link>
           ))}
         </div>

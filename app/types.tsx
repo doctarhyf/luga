@@ -1,6 +1,7 @@
 import { Interface } from "readline";
 
 export interface ISubItem {
+  id: number;
   label: string;
   sub: string;
   oldPrice: string;

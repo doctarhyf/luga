@@ -1,30 +1,6 @@
 import React from "react";
-import { clPage } from "../flow";
+import { SUBS, clPage } from "../flow";
 import SubItem from "./components/SubItem";
-
-const SUBS = [
-  {
-    label: "12 MONTHS",
-    sub: "Only $2.99 per month",
-    oldPrice: "",
-    price: "$35.99",
-    note: "one-time payment, non-recurring",
-  },
-  {
-    label: "2 YEARS",
-    sub: "Only $2.49 per month",
-    oldPrice: "",
-    price: "$59.99",
-    note: "one-time payment, non-recurring",
-  },
-  {
-    label: "LIFETINE",
-    sub: "Only $2.99 per month",
-    oldPrice: "$129",
-    price: "$119",
-    note: "one-time payment",
-  },
-];
 
 function Subscription() {
   return (

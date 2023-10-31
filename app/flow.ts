@@ -1,4 +1,12 @@
-import { ICategory, ICountry, IFeature, ILang, IRoute, IWord } from "./types";
+import {
+  ICategory,
+  ICountry,
+  IFeature,
+  ILang,
+  IRoute,
+  ISubItem,
+  IWord,
+} from "./types";
 
 export const categories: ICategory[] = [
   {
@@ -158,5 +166,32 @@ export const features: IFeature[] = [
     img: "/feat_8.png",
     big: true,
     btn: "HSK Sample Tests",
+  },
+];
+
+export const SUBS: ISubItem[] = [
+  {
+    id: 0,
+    label: "12 MONTHS",
+    sub: "Only $2.99 per month",
+    oldPrice: "",
+    price: "$35.99",
+    note: "one-time payment, non-recurring",
+  },
+  {
+    id: 1,
+    label: "2 YEARS",
+    sub: "Only $2.49 per month",
+    oldPrice: "",
+    price: "$59.99",
+    note: "one-time payment, non-recurring",
+  },
+  {
+    id: 2,
+    label: "LIFETINE",
+    sub: "Only $2.99 per month",
+    oldPrice: "$129",
+    price: "$119",
+    note: "one-time payment",
   },
 ];
