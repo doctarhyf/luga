@@ -43,3 +43,14 @@ export interface IFeature {
   big: boolean;
   btn: string;
 }
+
+export const enum GUI_STATE {
+  IDLE = 0,
+  EDITING_CATEGORY,
+  EDITING_WORD,
+}
+
+export type GuiState =
+  | GUI_STATE.IDLE
+  | GUI_STATE.EDITING_CATEGORY
+  | GUI_STATE.EDITING_WORD;

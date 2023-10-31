@@ -1,69 +1,10 @@
 "use client";
 import Image from "next/image";
-import { countries, strings } from "./flow";
+import { countries, features } from "./flow";
 import { useRouter } from "next/navigation";
 import ButtonStart from "./components/ButtonStart";
 import { ICountry, IFeature } from "./types";
 import { useState } from "react";
-
-const features: IFeature[] = [
-  {
-    title: "Free access",
-    desc: "All graded reading lessons are free to learn and practice.",
-    img: "/feat_1.png",
-    big: false,
-    btn: "",
-  },
-  {
-    title: "Subcription",
-    desc: "All graded reading lessons are free to learn and practice.",
-    img: "/feat_2.png",
-    big: false,
-    btn: "",
-  },
-  {
-    title: "Real world examples",
-    desc: "All graded reading lessons are free to learn and practice.",
-    img: "/feat_3.png",
-    big: false,
-    btn: "",
-  },
-  {
-    title: "Add Friends",
-    desc: "All graded reading lessons are free to learn and practice.",
-    img: "/feat_4.png",
-    big: false,
-    btn: "",
-  },
-  {
-    title: "Downloadable Materials",
-    desc: "All graded reading lessons are free to learn and practice.",
-    img: "/feat_5.png",
-    big: false,
-    btn: "",
-  },
-  {
-    title: "Videos",
-    desc: "All graded reading lessons are free to learn and practice.",
-    img: "/feat_6.png",
-    big: false,
-    btn: "",
-  },
-  {
-    title: "Downloadable Materials",
-    desc: "Practice your Chinese skills with our Chinese grammar exercises! See what you’ve learned well and what you need to practice more. It contains key grammar points from all HSK levels.",
-    img: "/feat_7.png",
-    big: true,
-    btn: "Chinese Grammar Exercises",
-  },
-  {
-    title: "Videos",
-    desc: "Practice your Chinese skills with our Chinese grammar exercises! See what you’ve learned well and what you need to practice more. It contains key grammar points from all HSK levels.",
-    img: "/feat_8.png",
-    big: true,
-    btn: "HSK Sample Tests",
-  },
-];
 
 function MainSplash() {
   return (

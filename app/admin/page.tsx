@@ -3,8 +3,9 @@ import { ROUTES, Words, categories } from "../flow";
 import FormNewWord from "./componemts/FormNewWord";
 import PinyinKB from "./componemts/PinyinKB";
 import Link from "next/link";
-import { ICategory, IWord } from "../types";
+import { GUI_STATE, GuiState, ICategory, ICountry, IWord } from "../types";
 import Image from "next/image";
+import { unescape } from "querystring";
 
 type propsType = {
   searchParams: any;
@@ -12,9 +13,14 @@ type propsType = {
 
 function AdminPanel({ searchParams }: propsType) {
   console.log(searchParams);
-  const { cat, wd } = searchParams;
+
+  const { cat, wd, gs, lang } = searchParams; // cat : category; wd: word; gs: guistate
   const selectedCatID: number = parseInt(cat);
   const selectedWordID: number = parseInt(wd);
+  const selectedLang: string = lang === undefined ? "fr" : lang;
+
+  const guiState: GuiState =
+    gs === undefined ? GUI_STATE.IDLE : (parseInt(gs) as GUI_STATE);
 
   return (
     <div className="mx-auto max-w-[900px]">
@@ -94,7 +100,9 @@ function AdminPanel({ searchParams }: propsType) {
         </details>
 
         <details className=" md:w-[30%]">
-          <summary>Words List</summary>
+          <summary>
+            Words List ({categories[selectedCatID].name[selectedLang]})
+          </summary>
           <div className="  ">
             <div className="pb-4 border-b mb-4">
               <input
