@@ -90,3 +90,5 @@ export const ROUTES: Record<string, IRoute> = {
   LANG: { label: "Language", path: "/lang" },
   ADMIN: { label: "Admin", path: "/admin" },
 };
+
+export const Words: IWord[] = strings;
