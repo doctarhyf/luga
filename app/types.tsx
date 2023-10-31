@@ -16,6 +16,14 @@ export interface ICountry {
   lang: string;
 }
 
+export interface ILang {
+  id?: number;
+  name: string;
+  symbol: string;
+  flag: string;
+  me: string;
+}
+
 export interface IWord {
   id?: number;
   fr: string;

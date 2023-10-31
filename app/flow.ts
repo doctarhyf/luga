@@ -1,4 +1,4 @@
-import { ICategory, ICountry, IFeature, IRoute, IWord } from "./types";
+import { ICategory, ICountry, IFeature, ILang, IRoute, IWord } from "./types";
 
 export const categories: ICategory[] = [
   {
@@ -79,6 +79,14 @@ export const countries: Record<string, ICountry> = {
   },
 };
 
+export const LANGS: ILang[] = [
+  { name: "Francais", symbol: "fr", flag: "fr.png", me: "Je parle francais" },
+  { name: "Swahili", symbol: "sw", flag: "drc.png", me: "Na sema Kiswahili" },
+  { name: "Chinois", symbol: "zh", flag: "prc.png", me: "我会讲中文" },
+];
+
+export const LANG_DEFAULT: ILang = LANGS[0];
+
 export const clPage = "max-w-[900px]  mx-auto p-4";
 
 export const ROUTES: Record<string, IRoute> = {
@@ -89,6 +97,7 @@ export const ROUTES: Record<string, IRoute> = {
   SUBSCRIPTION: { label: "Subscription", path: "/sub" },
   LANG: { label: "Language", path: "/lang" },
   ADMIN: { label: "Admin", path: "/admin" },
+  CATEGORIES: { label: "Categories", path: "categories" },
 };
 
 export const Words: IWord[] = strings;
