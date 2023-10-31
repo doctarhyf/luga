@@ -6,8 +6,15 @@ import Link from "next/link";
 import { ICategory, IWord } from "../types";
 import Image from "next/image";
 
-function AdminPanel({ searchParams }: { searchParams: any }) {
+type propsType = {
+  searchParams: any;
+};
+
+function AdminPanel({ searchParams }: propsType) {
   console.log(searchParams);
+  const { cat, wd } = searchParams;
+  const selectedCatID: number = parseInt(cat);
+  const selectedWordID: number = parseInt(wd);
 
   return (
     <div className="mx-auto max-w-[900px]">
@@ -32,12 +39,15 @@ function AdminPanel({ searchParams }: { searchParams: any }) {
             <>
               <button className="p-4 btn btn-primary mb-4">NEW CATEGORY</button>
               {categories.map((item: ICategory, i) => (
-                <button
+                <Link
+                  href={`?cat=${i}&wd=${selectedWordID}`}
                   key={i}
-                  className="p-2 block w-full text-start border rounded-md cursor-pointer mb-2 hover:text-white hover:bg-orange-600 "
+                  className={` ${
+                    selectedCatID === i ? "bg-orange-500 text-white" : ""
+                  } p-2 block w-full text-start border rounded-md cursor-pointer mb-2 hover:text-white hover:bg-orange-600 `}
                 >
                   {item.name.fr}
-                </button>
+                </Link>
               ))}
             </>
 
@@ -97,12 +107,13 @@ function AdminPanel({ searchParams }: { searchParams: any }) {
             <button className="p-4 btn btn-primary mb-4">NEW Word</button>
 
             {Words.map((item: IWord, i) => (
-              <button
+              <Link
+                href={`?cat=${selectedCatID}&wd=${i}`}
                 key={i}
                 className="p-2 block w-full text-start border rounded-md cursor-pointer mb-2 hover:text-white hover:bg-orange-600 "
               >
                 {item.fr}
-              </button>
+              </Link>
             ))}
           </div>
         </details>
