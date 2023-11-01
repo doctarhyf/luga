@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from "react";
-import { ROUTES, Words, categories } from "../flow";
+import { ROUTES, Words, categories, strings } from "../flow";
 import FormNewWord from "./componemts/FormNewWord";
 import PinyinKB from "./componemts/PinyinKB";
 import Link from "next/link";
@@ -18,6 +18,16 @@ function AdminPanel({ searchParams }: propsType) {
   const selectedCatID: number = cat === undefined ? 0 : parseInt(cat);
   const selectedWordID: number = wd === undefined ? 0 : parseInt(wd);
   const selectedLang: string = lang === undefined ? "fr" : lang;
+  const defaultWord: IWord = {
+    fr: "Choisir le type de categorie",
+    sw: "Choose the words category",
+    zh: "汉语拼音",
+    py: "Hànyǔ pīnyīn",
+  };
+  let selectedWord: IWord =
+    strings[wd] === undefined ? defaultWord : strings[wd];
+
+  console.log("sw => ", selectedWord);
 
   const guiState: GuiState =
     gs === undefined ? GUI_STATE.IDLE : (parseInt(gs) as GUI_STATE);
@@ -29,21 +39,30 @@ function AdminPanel({ searchParams }: propsType) {
       <PinyinKB />}
       <div className="flex flex-col md:flex-row justify-between p-4 "></div> */}
 
+      <div className="py-2 border-b  ">
+        <div>
+          <Link
+            className="p-4 btn btn-primary mb-4"
+            href={ROUTES.ADD_WORD_OR_CAT.path}
+          >
+            Add Word or Category
+          </Link>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Search"
+            className="input input-bordered w-full w-full"
+          />
+        </div>
+      </div>
+
       <div className="flex flex-col md:flex-row justify-between p-4 ">
         <details className=" md:w-[30%]">
           <summary>Catrgories</summary>
 
           <div className="   ">
-            <div className="pb-4 border-b mb-4">
-              <input
-                type="text"
-                placeholder="Search Cat"
-                className="input input-bordered w-full"
-              />
-            </div>
-
             <>
-              <button className="p-4 btn btn-primary mb-4">NEW CATEGORY</button>
               {categories.map((item: ICategory, i) => (
                 <Link
                   href={`?cat=${i}&wd=${selectedWordID}`}
@@ -104,16 +123,6 @@ function AdminPanel({ searchParams }: propsType) {
             Words List ({categories[selectedCatID].name[selectedLang]})
           </summary>
           <div className="  ">
-            <div className="pb-4 border-b mb-4">
-              <input
-                type="text"
-                placeholder="Search word"
-                className="input input-bordered w-full"
-              />
-            </div>
-
-            <button className="p-4 btn btn-primary mb-4">NEW Word</button>
-
             {Words.map((item: IWord, i) => (
               <Link
                 href={`?cat=${selectedCatID}&wd=${i}`}
@@ -131,23 +140,26 @@ function AdminPanel({ searchParams }: propsType) {
 
           <div className="flex items-center flex-col">
             <div className="text-[32pt] font-black bg-gradient-to-r bg-clip-text text-transparent from-purple-500 to-blue-500">
-              汉语拼音
+              {
+                //汉语拼音
+                selectedWord.zh
+              }
             </div>
-            <div className=" text-neutral-400 ">Hànyǔ pīnyīn</div>
+            <div className=" text-neutral-400 ">{selectedWord.py}</div>
 
             <div className="flex gap-4 flex-col mt-4 ">
               <div className="flex gap-4">
                 <div>
                   <Image alt="rdc" src={"/drc.png"} width={30} height={30} />
                 </div>
-                <div>French</div>
+                <div>{selectedWord.fr}</div>
               </div>
 
               <div className="flex gap-4">
                 <div>
                   <Image alt="prc" src={"/prc.png"} width={30} height={30} />
                 </div>
-                <div>French</div>
+                <div>{selectedWord.sw}</div>
               </div>
             </div>
           </div>

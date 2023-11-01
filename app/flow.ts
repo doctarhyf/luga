@@ -52,7 +52,7 @@ export const categories: ICategory[] = [
 ];
 
 export const strings: IWord[] = [
-  { fr: "Bonjour", sw: "Ni dje?", zh: "你好" },
+  { fr: "Bonjour", sw: "Ni dje?", zh: "你好", py: "Ni hao!" },
   { fr: "Demarrer", sw: "Anza", zh: "开始" },
   { fr: "Rechercher", sw: "Mina tafuta ...", zh: "搜索" },
   { fr: "Catégories", sw: "Categories", zh: "类别" },
@@ -107,6 +107,7 @@ export const ROUTES: Record<string, IRoute> = {
   LANG: { label: "Language", path: "/lang" },
   ADMIN: { label: "Admin", path: "/admin" },
   CATEGORIES: { label: "Categories", path: "categories" },
+  ADD_WORD_OR_CAT: { label: "Add word or category", path: "/addwdcat" },
 };
 
 export const Words: IWord[] = strings;
