@@ -98,11 +98,12 @@ export const LANG_DEFAULT: ILang = LANGS[0];
 export const clPage = "max-w-[900px]  mx-auto p-4";
 
 export const ROUTES: Record<string, IRoute> = {
-  ROOT: { label: "", path: "/" },
+  ROOT: { label: "Home", path: "/" },
   HOME: { label: "Home", path: "/home" },
   LOGIN: { label: "Login", path: "/auth/login" },
   RECOVER: { label: "Recover password", path: "/auth/recover" },
   SUBSCRIPTION: { label: "Subscription", path: "/sub" },
+  WORDS_REQUESTS: { label: "Words Request", path: "/wdreq" },
   LANG: { label: "Language", path: "/lang" },
   ADMIN: { label: "Admin", path: "/admin" },
   CATEGORIES: { label: "Categories", path: "categories" },

@@ -54,7 +54,7 @@ async function WordsList({ searchParams }: { searchParams: any }) {
 
   return (
     <div className={clp}>
-      <div>ordsList {category}</div>
+      <div>wordsList {category}</div>
       <div>
         {data.map((d: IItem, i: number) => (
           <div key={i}>
