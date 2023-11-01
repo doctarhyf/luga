@@ -15,8 +15,8 @@ function AdminPanel({ searchParams }: propsType) {
   console.log(searchParams);
 
   const { cat, wd, gs, lang } = searchParams; // cat : category; wd: word; gs: guistate
-  const selectedCatID: number = parseInt(cat);
-  const selectedWordID: number = parseInt(wd);
+  const selectedCatID: number = cat === undefined ? 0 : parseInt(cat);
+  const selectedWordID: number = wd === undefined ? 0 : parseInt(wd);
   const selectedLang: string = lang === undefined ? "fr" : lang;
 
   const guiState: GuiState =
