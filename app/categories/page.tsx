@@ -3,7 +3,7 @@ import { LANG_DEFAULT, categories, strings } from "../flow";
 import next from "../../public/next.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { IWord } from "../types";
+import { IWord } from "../types/types";
 
 function Home({ searchParams }: { searchParams: any }) {
   const { lang } = searchParams;

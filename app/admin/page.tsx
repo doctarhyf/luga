@@ -3,7 +3,13 @@ import { ROUTES, Words, categories, strings } from "../flow";
 import FormNewWord from "./componemts/FormNewWord";
 import PinyinKB from "./componemts/PinyinKB";
 import Link from "next/link";
-import { GUI_STATE, GuiState, ICategory, ICountry, IWord } from "../types";
+import {
+  GUI_STATE,
+  GuiState,
+  ICategory,
+  ICountry,
+  IWord,
+} from "../types/types";
 import Image from "next/image";
 import { unescape } from "querystring";
 

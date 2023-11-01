@@ -1,5 +1,5 @@
 "use client";
-import { ISubItem } from "@/app/types";
+import { ISubItem } from "@/app/types/types";
 import Link from "next/link";
 import React from "react";
 

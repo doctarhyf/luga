@@ -3,7 +3,7 @@ import Image from "next/image";
 import { countries, features } from "./flow";
 import { useRouter } from "next/navigation";
 import ButtonStart from "./components/ButtonStart";
-import { ICountry, IFeature } from "./types";
+import { ICountry, IFeature } from "./types/types";
 import { useState } from "react";
 
 function MainSplash() {

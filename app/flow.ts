@@ -6,7 +6,7 @@ import {
   IRoute,
   ISubItem,
   IWord,
-} from "./types";
+} from "./types/types";
 
 export const categories: ICategory[] = [
   {
@@ -94,6 +94,7 @@ export const LANGS: ILang[] = [
 ];
 
 export const LANG_DEFAULT: ILang = LANGS[0];
+export const CAT_DEFAULT: ICategory = categories[0];
 
 export const clPage = "max-w-[900px]  mx-auto p-4";
 

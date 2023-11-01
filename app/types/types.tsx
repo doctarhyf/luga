@@ -59,6 +59,16 @@ export const enum GUI_STATE {
   EDITING_WORD,
 }
 
+export interface ILugaWord {
+  id?: number;
+  created_at?: string;
+  fr: string;
+  sw: string;
+  py: string;
+  zh: string;
+  active: boolean;
+}
+
 export type GuiState =
   | GUI_STATE.IDLE
   | GUI_STATE.EDITING_CATEGORY

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { LANGS, LANG_DEFAULT, ROUTES, countries, strings } from "../flow";
 import { useRouter } from "next/navigation";
-import { ICountry, IWord } from "../types";
+import { ICountry, IWord } from "../types/types";
 import Link from "next/link";
 
 export default function Home({ searchParams }: { searchParams: any }) {

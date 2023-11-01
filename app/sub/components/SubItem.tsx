@@ -1,6 +1,6 @@
 import React from "react";
 import { Interface } from "readline";
-import type { ISubItem } from "@/app/types";
+import type { ISubItem } from "@/app/types/types";
 import ButtonSubscribe from "./ButtonSubscribe";
 
 type SubItemsProps = {
