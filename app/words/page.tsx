@@ -43,7 +43,7 @@ async function WordsList({ searchParams }: { searchParams: any }) {
   const selectedLang: string = lang === undefined ? LANG_DEFAULT.symbol : lang;
   const selectedCat: string = cat === undefined ? CAT_DEFAULT.path : cat;
   const data: ILugaWord[] = (await getData()).data as ILugaWord[];
-  const selectedWordID: number = 0;
+  const selectedWordID: number = wd === undefined ? 0 : parseInt(wd);
   const defaultWord: ILugaWord = {
     id: 2,
     created_at: "2023-11-01T14:00:48.536413+00:00",
@@ -53,9 +53,11 @@ async function WordsList({ searchParams }: { searchParams: any }) {
     zh: "我需要一个螺丝刀",
     active: true,
   };
-  const selectedWord = defaultWord;
 
-  console.log(data);
+  const foundWord = data.find((it) => it.id === selectedWordID);
+  const selectedWord = foundWord === undefined ? defaultWord : foundWord; // defaultWord;
+
+  console.log(selectedWordID, typeof selectedWordID);
 
   if (category === undefined)
     return (
@@ -79,22 +81,24 @@ async function WordsList({ searchParams }: { searchParams: any }) {
     <div className={clp}>
       <div className="py-4 text-3xl text-orange-500">{category}</div>
 
-      <div className="flex   gap-4">
-        <div className="flex-2">
-          {data.map((currentLugaWord: ILugaWord, i: number) => (
-            <Link
-              href={`?cat=${selectedCat}&lang=${selectedLang}&wd=${currentLugaWord.id}`}
-              key={i}
-            >
-              <div
-                className={`  ${
-                  i === parseInt(wd) - 1 ? "bg-orange-500 text-white" : ""
-                } border rounded-md border-transparent hover:border-orange-500 p-1 hover:text-orange-500`}
+      <div className="flex p-2  gap-4">
+        <div className="flex-2 ">
+          <div className=" flex flex-col gap-2 ">
+            {data.map((currentLugaWord: ILugaWord, i: number) => (
+              <Link
+                href={`?cat=${selectedCat}&lang=${selectedLang}&wd=${currentLugaWord.id}`}
+                key={i}
               >
-                {currentLugaWord[selectedLang as keyof ILugaWord]}
-              </div>
-            </Link>
-          ))}
+                <div
+                  className={`  ${
+                    i === parseInt(wd) - 1 ? "bg-orange-500 " : ""
+                  } border rounded-md border-transparent hover:border-orange-500 p-1 `}
+                >
+                  {currentLugaWord[selectedLang as keyof ILugaWord]}
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="flex-1 ">
