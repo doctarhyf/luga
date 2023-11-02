@@ -4,15 +4,19 @@ import { ILugaWord } from "../types/types";
 import { useSearchParams } from "next/navigation";
 import { sb } from "../db/sb";
 
+export const revalidate = 10;
+
 function Search() {
   const searchParamas = useSearchParams();
 
-  let lang =
-    searchParamas.get("lang") === undefined ? "fr" : searchParamas.get("lang");
-
+  const [wordsfiltered, setwordsfiltered] = useState<ILugaWord[]>([]);
   const [words, setwords] = useState<ILugaWord[]>([]);
+  const [lang, setlang] = useState("fr");
+  const [q, setq] = useState("");
 
   useEffect(() => {
+    setlang(searchParamas.get("lang") || "zh");
+
     async function loadWords() {
       const { data, error } = await sb.from("luga_words").select("*");
 
@@ -22,23 +26,40 @@ function Search() {
       }
 
       setwords(data);
+      setwordsfiltered(data);
+
+      console.log("loaded data => \n", data);
     }
 
     loadWords();
   }, []);
 
+  function onSearch(e: React.ChangeEvent<HTMLInputElement>) {
+    const v = e.target.value.toLowerCase();
+    setq(v);
+
+    setwordsfiltered(
+      words.filter((it, i) => it.fr.toLocaleLowerCase().includes(v))
+    );
+  }
+
   return (
     <div className="p-4">
       <div>
         <input
+          onChange={onSearch}
+          value={q}
           type="text"
           placeholder="Type here"
           className="input input-bordered input-primary w-full max-w-xs"
         />{" "}
       </div>
-      <div>
-        {words.map((curw, i) => (
-          <button>{curw[lang as keyof ILugaWord]}</button>
+
+      <div className="flex flex-col md:flex-row  gap-4 md:flex-wrap ">
+        {wordsfiltered.map((curw, i) => (
+          <div className="p-1 my-2 border rounded-full px-2 cursor-pointer hover:text-orange-500 hover:border-orange-500 md:w-fit ">
+            {curw[lang as keyof ILugaWord]}
+          </div>
         ))}
       </div>
     </div>

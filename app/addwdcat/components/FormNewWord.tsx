@@ -27,25 +27,25 @@ function FormNewWord() {
   async function onAddWord() {
     //alert(JSON.stringify(data));
     setloading(true);
-    /* const { data: res, error } = await sb
+    const { data: res, error } = await sb
       .from("luga_words")
       .insert([data])
-      .select(); */
+      .select();
 
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("cool");
+    //await new Promise((resolve) => setTimeout(resolve, 2000));
+    //console.log("cool");
 
-    if (true) {
-      //(error) {
+    //if (true) {
+    if (error) {
       alert("Error saving word!");
       setloading(false);
       return;
     }
 
-    /* if  (res) {
+    if (res) {
       alert("Word saved!");
       setloading(false);
-    } */
+    }
   }
 
   return (
