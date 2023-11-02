@@ -66,7 +66,7 @@ export interface ILugaWord {
   sw: string;
   py: string;
   zh: string;
-  active: boolean;
+  active?: boolean;
   category?: string[];
 }
 

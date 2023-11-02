@@ -70,7 +70,10 @@ async function WordsList({ searchParams }: { searchParams: any }) {
 
   return (
     <div className={clp}>
-      <div className="py-4 text-3xl text-orange-500">{category}</div>
+      <div className="py-4 text-3xl text-orange-500 border-b ">
+        <Link href={".."}>{"<="}</Link>
+        {category}
+      </div>
 
       <div className="flex p-2  gap-4">
         <div className="flex-2 ">
@@ -89,7 +92,9 @@ async function WordsList({ searchParams }: { searchParams: any }) {
                 >
                   <div
                     className={`  ${
-                      i === parseInt(wd) - 1 ? "bg-orange-500 " : ""
+                      selectedWordID === currentLugaWord.id
+                        ? "bg-orange-500 "
+                        : ""
                     } border rounded-md border-transparent hover:border-orange-500 p-1 `}
                   >
                     {currentLugaWord[selectedLang as keyof ILugaWord]}
@@ -111,16 +116,10 @@ async function WordsList({ searchParams }: { searchParams: any }) {
 
             <div className="flex gap-4 flex-col mt-4 ">
               <div className="flex gap-4">
-                <div>
-                  <Image alt="rdc" src={"/drc.png"} width={30} height={30} />
-                </div>
                 <div>{selectedWord.fr}</div>
               </div>
 
               <div className="flex gap-4">
-                <div>
-                  <Image alt="prc" src={"/prc.png"} width={30} height={30} />
-                </div>
                 <div>{selectedWord.sw}</div>
               </div>
             </div>
