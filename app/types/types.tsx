@@ -67,6 +67,7 @@ export interface ILugaWord {
   py: string;
   zh: string;
   active: boolean;
+  category?: string[];
 }
 
 export type GuiState =

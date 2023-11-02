@@ -11,6 +11,8 @@ import Image from "next/image";
 import { sb } from "../db/sb";
 import { ILugaWord, IWord } from "../types/types";
 
+export const revalidate = 10;
+
 const API_KEY = "https://jsonplaceholder.typicode.com/photos";
 
 /* interface IItem {
@@ -22,17 +24,6 @@ const API_KEY = "https://jsonplaceholder.typicode.com/photos";
 } */
 
 async function getData() {
-  /* const res = await fetch(API_KEY);
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json(); */
-
   return await sb.from("luga_words").select("*");
 }
 
@@ -57,7 +48,7 @@ async function WordsList({ searchParams }: { searchParams: any }) {
   const foundWord = data.find((it) => it.id === selectedWordID);
   const selectedWord = foundWord === undefined ? defaultWord : foundWord; // defaultWord;
 
-  console.log(selectedWordID, typeof selectedWordID);
+  console.log("da sel word => \n", selectedWord);
 
   if (category === undefined)
     return (
@@ -84,20 +75,27 @@ async function WordsList({ searchParams }: { searchParams: any }) {
       <div className="flex p-2  gap-4">
         <div className="flex-2 ">
           <div className=" flex flex-col gap-2 ">
-            {data.map((currentLugaWord: ILugaWord, i: number) => (
-              <Link
-                href={`?cat=${selectedCat}&lang=${selectedLang}&wd=${currentLugaWord.id}`}
-                key={i}
-              >
-                <div
-                  className={`  ${
-                    i === parseInt(wd) - 1 ? "bg-orange-500 " : ""
-                  } border rounded-md border-transparent hover:border-orange-500 p-1 `}
+            {data.length === 0 && (
+              <>
+                <div>No words available!</div>
+              </>
+            )}
+
+            {data.length > 0 &&
+              data.map((currentLugaWord: ILugaWord, i: number) => (
+                <Link
+                  href={`?cat=${selectedCat}&lang=${selectedLang}&wd=${currentLugaWord.id}`}
+                  key={i}
                 >
-                  {currentLugaWord[selectedLang as keyof ILugaWord]}
-                </div>
-              </Link>
-            ))}
+                  <div
+                    className={`  ${
+                      i === parseInt(wd) - 1 ? "bg-orange-500 " : ""
+                    } border rounded-md border-transparent hover:border-orange-500 p-1 `}
+                  >
+                    {currentLugaWord[selectedLang as keyof ILugaWord]}
+                  </div>
+                </Link>
+              ))}
           </div>
         </div>
 
