@@ -75,6 +75,14 @@ async function WordsList({ searchParams }: { searchParams: any }) {
         {category}
       </div>
 
+      <div className="p-2 mt-2 border rounded-md">
+        <Link
+          className=" hover:text-orange-500 w-full inline-block"
+          href={ROUTES.SEARCH.path}
+        >
+          Search ...
+        </Link>
+      </div>
       <div className="flex p-2  gap-4">
         <div className="flex-2 ">
           <div className=" flex flex-col gap-2 ">
@@ -118,7 +126,6 @@ async function WordsList({ searchParams }: { searchParams: any }) {
               <div className="flex gap-4">
                 <div>{selectedWord.fr}</div>
               </div>
-
               <div className="flex gap-4">
                 <div>{selectedWord.sw}</div>
               </div>

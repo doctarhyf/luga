@@ -109,6 +109,7 @@ export const ROUTES: Record<string, IRoute> = {
   ADMIN: { label: "Admin", path: "/admin" },
   CATEGORIES: { label: "Categories", path: "categories" },
   ADD_WORD_OR_CAT: { label: "Add word or category", path: "/addwdcat" },
+  SEARCH: { label: "Search", path: "/search" },
 };
 
 export const Words: IWord[] = strings;
