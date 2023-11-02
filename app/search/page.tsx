@@ -14,8 +14,14 @@ function Search() {
 
   useEffect(() => {
     async function loadWords() {
-      const data = await sb.from("luga_words").select("*");
-      console.log(data);
+      const { data, error } = await sb.from("luga_words").select("*");
+
+      if (error) {
+        alert(JSON.stringify(error));
+        return;
+      }
+
+      setwords(data);
     }
 
     loadWords();
@@ -32,7 +38,7 @@ function Search() {
       </div>
       <div>
         {words.map((curw, i) => (
-          <button>{curw.fr}</button>
+          <button>{curw[lang as keyof ILugaWord]}</button>
         ))}
       </div>
     </div>
