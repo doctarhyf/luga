@@ -39,7 +39,10 @@ function Search() {
     setq(v);
 
     setwordsfiltered(
-      words.filter((it, i) => it.fr.toLocaleLowerCase().includes(v))
+      words.filter((it, i) => {
+        const d = it[lang as keyof ILugaWord] as string;
+        return d.includes(v);
+      })
     );
   }
 
