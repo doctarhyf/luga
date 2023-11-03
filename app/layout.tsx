@@ -7,10 +7,22 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../public/luga.png";
 import { ROUTES } from "./flow";
+import { IRoute } from "./types/types";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export function Header() {
+  const mavMenuItems: IRoute[] = [
+    ROUTES.ROOT,
+    ROUTES.LOGIN,
+    ROUTES.SUBSCRIPTION,
+    ROUTES.LANG,
+    ROUTES.WORDS_REQUESTS,
+    ROUTES.CATEGORIES,
+    ROUTES.SEARCH,
+    ROUTES.WORDS_LIST,
+  ];
+
   return (
     <div className="navbar bg-base-100 max-w-[900px] mx-auto ">
       {/*  <div className="flex-1">
@@ -53,11 +65,28 @@ export function Header() {
             className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div className="card-body">
-              <span className="font-bold text-lg">8 Items</span>
-              <span className="text-info">Subtotal: $999</span>
-              <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
-              </div>
+              <>
+                {mavMenuItems.map((rt: IRoute, i) => (
+                  <Link
+                    href={`${rt.path}`}
+                    className="p-2 hover:text-orange-500 hover:font-bold"
+                  >
+                    <div>{rt.label}</div>
+                  </Link>
+                ))}
+              </>
+
+              {false && (
+                <>
+                  <span className="font-bold text-lg">8 Items</span>
+                  <span className="text-info">Subtotal: $999</span>
+                  <div className="card-actions">
+                    <button className="btn btn-primary btn-block">
+                      View cart
+                    </button>
+                  </div>{" "}
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -87,24 +116,6 @@ export function Header() {
         </div>
       </div>
     </div>
-
-    /*  <div className=" main-header border-b ">
-      <div className=" max-w-[900px] mx-auto flex items-center justify-between p-4 ">
-        <div className="  w-fit font-bold text-xl ">
-          <Link href={ROUTES.ROOT.path}>
-            <Image
-              alt="luga"
-              className=" object-contain -ml-20  h-[30pt]"
-              src={logo}
-            />
-          </Link>
-        </div>
-
-        <div>
-          <Link href={ROUTES.LOGIN.path}>{ROUTES.LOGIN.label}</Link>
-        </div>
-      </div>
-    </div> */
   );
 }
 

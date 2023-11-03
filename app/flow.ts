@@ -100,19 +100,35 @@ export const CAT_DEFAULT: ICategory = categories[0];
 export const clPage = "max-w-[900px]  mx-auto p-4";
 
 export const ROUTES: Record<string, IRoute> = {
-  ROOT: { label: "Home", path: "/" },
+  ROOT: { label: "Home", path: "/", showInMainMenu: true },
   HOME: { label: "Home", path: "/home" },
-  LOGIN: { label: "Login", path: "/auth/login" },
+  LOGIN: { label: "Login", path: "/auth/login", showInMainMenu: true },
   RECOVER: { label: "Recover password", path: "/auth/recover" },
-  SUBSCRIPTION: { label: "Subscription", path: "/sub" },
-  WORDS_REQUESTS: { label: "Words Request", path: "/word_req" },
-  LANG: { label: "Language", path: "/lang" },
+  SUBSCRIPTION: { label: "Subscription", path: "/sub", showInMainMenu: true },
+  WORDS_REQUESTS: {
+    label: "Words Request",
+    path: "/word_req",
+    showInMainMenu: true,
+  },
+  LANG: { label: "Language", path: "/lang", showInMainMenu: true },
   ADMIN: { label: "Admin", path: "/admin" },
-  CATEGORIES: { label: "Categories", path: "/categories" },
+  CATEGORIES: {
+    label: "Categories",
+    path: "/categories",
+    showInMainMenu: true,
+  },
   ADD_WORD_OR_CAT: { label: "Add word or category", path: "/addwdcat" },
-  SEARCH: { label: "Search", path: "/search" },
+  SEARCH: { label: "Search", path: "/search", showInMainMenu: true },
   WORD_VIEW: { label: "Word View", path: "/words_list/word_view" },
-  WORDS_LIST: { label: "Words List", path: "/words_list" },
+  WORDS_LIST: {
+    label: "Words List",
+    path: "/words_list",
+    showInMainMenu: true,
+  },
+  PROFILE: {
+    label: "Profile",
+    path: "/profile",
+  },
 };
 
 export const Words: IWord[] = strings;

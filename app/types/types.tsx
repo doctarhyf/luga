@@ -43,6 +43,7 @@ export interface ICategory {
 export interface IRoute {
   label: string;
   path: string;
+  showInMainMenu?: boolean;
 }
 
 export interface IFeature {
