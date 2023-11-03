@@ -1,27 +1,19 @@
 import React from "react";
 import {
   CAT_DEFAULT,
+  ILUGA_WORD_DEFAULT,
   LANG_DEFAULT,
   ROUTES,
   categories,
-  strings,
 } from "../flow";
 import Link from "next/link";
-import Image from "next/image";
 import { sb } from "../db/sb";
-import { ILugaWord, IWord } from "../types/types";
+import { ILugaWord } from "../types/types";
+import ShowWord from "./components/ShowWord";
 
 export const revalidate = 10;
 
 const API_KEY = "https://jsonplaceholder.typicode.com/photos";
-
-/* interface IItem {
-  albumId: number;
-  id: number;
-  title: string;
-  url: string;
-  thumbnailUrl: string;
-} */
 
 async function getData() {
   return await sb.from("luga_words").select("*");
@@ -35,18 +27,9 @@ async function WordsList({ searchParams }: { searchParams: any }) {
   const selectedCat: string = cat === undefined ? CAT_DEFAULT.path : cat;
   const data: ILugaWord[] = (await getData()).data as ILugaWord[];
   const selectedWordID: number = wd === undefined ? 0 : parseInt(wd);
-  const defaultWord: ILugaWord = {
-    id: 2,
-    created_at: "2023-11-01T14:00:48.536413+00:00",
-    fr: "J'ai besoin d'un tournevis",
-    sw: "Niko besoin na tournevis",
-    py: "wǒ xūyào yīgè luósīdāo",
-    zh: "我需要一个螺丝刀",
-    active: true,
-  };
 
   const foundWord = data.find((it) => it.id === selectedWordID);
-  const selectedWord = foundWord === undefined ? defaultWord : foundWord; // defaultWord;
+  const selectedWord = foundWord === undefined ? ILUGA_WORD_DEFAULT : foundWord; // defaultWord;
 
   console.log("da sel word => \n", selectedWord);
 
@@ -80,7 +63,7 @@ async function WordsList({ searchParams }: { searchParams: any }) {
           className=" hover:text-orange-500 w-full inline-block"
           href={ROUTES.SEARCH.path}
         >
-          Search ...
+          Search (words, phrases ...)
         </Link>
       </div>
       <div className="flex p-2  gap-4">
@@ -113,24 +96,7 @@ async function WordsList({ searchParams }: { searchParams: any }) {
         </div>
 
         <div className="flex-1 ">
-          <div className="flex items-center flex-col">
-            <div className="text-[32pt] font-black bg-gradient-to-r bg-clip-text text-transparent from-purple-500 to-blue-500">
-              {
-                //汉语拼音
-                selectedWord.zh
-              }
-            </div>
-            <div className=" text-neutral-400 ">{selectedWord.py}</div>
-
-            <div className="flex gap-4 flex-col mt-4 ">
-              <div className="flex gap-4">
-                <div>{selectedWord.fr}</div>
-              </div>
-              <div className="flex gap-4">
-                <div>{selectedWord.sw}</div>
-              </div>
-            </div>
-          </div>
+          <ShowWord word={selectedWord} />
         </div>
       </div>
     </div>

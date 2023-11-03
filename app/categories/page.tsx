@@ -1,5 +1,5 @@
 import React from "react";
-import { LANG_DEFAULT, categories, strings } from "../flow";
+import { LANG_DEFAULT, ROUTES, categories, strings } from "../flow";
 import next from "../../public/next.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,7 +21,10 @@ function Home({ searchParams }: { searchParams: any }) {
       </div>
       <div className=" md:flex  ">
         {categories.map((cat, i) => (
-          <Link key={i} href={`/words?cat=${cat.path}&lang=${selectedLang}`}>
+          <Link
+            key={i}
+            href={`${ROUTES.WORDS_LIST.path}?cat=${cat.path}&lang=${selectedLang}`}
+          >
             <div className=" w-full md:w-fit flex-grow p-2 m-1 mb-4 cursor-pointer hover:bg-sky-500 hover:text-white border rounded-md">
               <div className=" ">
                 <div className="bg-red-500">

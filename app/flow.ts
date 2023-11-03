@@ -3,6 +3,7 @@ import {
   ICountry,
   IFeature,
   ILang,
+  ILugaWord,
   IRoute,
   ISubItem,
   IWord,
@@ -104,12 +105,14 @@ export const ROUTES: Record<string, IRoute> = {
   LOGIN: { label: "Login", path: "/auth/login" },
   RECOVER: { label: "Recover password", path: "/auth/recover" },
   SUBSCRIPTION: { label: "Subscription", path: "/sub" },
-  WORDS_REQUESTS: { label: "Words Request", path: "/wdreq" },
+  WORDS_REQUESTS: { label: "Words Request", path: "/word_req" },
   LANG: { label: "Language", path: "/lang" },
   ADMIN: { label: "Admin", path: "/admin" },
-  CATEGORIES: { label: "Categories", path: "categories" },
+  CATEGORIES: { label: "Categories", path: "/categories" },
   ADD_WORD_OR_CAT: { label: "Add word or category", path: "/addwdcat" },
   SEARCH: { label: "Search", path: "/search" },
+  WORD_VIEW: { label: "Word View", path: "/words_list/word_view" },
+  WORDS_LIST: { label: "Words List", path: "/words_list" },
 };
 
 export const Words: IWord[] = strings;
@@ -199,3 +202,13 @@ export const SUBS: ISubItem[] = [
     note: "one-time payment",
   },
 ];
+
+export const ILUGA_WORD_DEFAULT: ILugaWord = {
+  id: 2,
+  created_at: "2023-11-01T14:00:48.536413+00:00",
+  fr: "J'ai besoin d'un tournevis",
+  sw: "Niko besoin na tournevis",
+  py: "wǒ xūyào yīgè luósīdāo",
+  zh: "我需要一个螺丝刀",
+  active: true,
+};
