@@ -126,7 +126,7 @@ export function Footer() {
         {[
           { name: ROUTES.ROOT.label, path: ROUTES.ROOT.path },
           { name: ROUTES.CATEGORIES.label, path: ROUTES.CATEGORIES.path },
-          { name: ROUTES.ADMIN.label, path: ROUTES.ADMIN.path },
+          /* { name: ROUTES.ADMIN.label, path: ROUTES.ADMIN.path }, */
           {
             name: ROUTES.WORDS_REQUESTS.label,
             path: ROUTES.WORDS_REQUESTS.path,

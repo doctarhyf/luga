@@ -81,46 +81,6 @@ function AdminPanel({ searchParams }: propsType) {
                 </Link>
               ))}
             </>
-
-            <>
-              <div className="flex items-center flex-col">
-                <div className="pb-4 ">
-                  <input
-                    name="zh"
-                    type="text"
-                    placeholder="Hanzi"
-                    className="input input-bordered w-full"
-                  />
-                </div>
-                <div className="pb-4 ">
-                  <input
-                    type="text"
-                    placeholder="Search word"
-                    className="input input-bordered w-full"
-                  />
-                </div>
-                <div className="pb-4 ">
-                  <input
-                    type="text"
-                    placeholder="Search word"
-                    className="input input-bordered w-full"
-                  />
-                </div>
-                <div className="pb-4 ">
-                  <input
-                    type="text"
-                    placeholder="Search word"
-                    className="input input-bordered w-full"
-                  />
-                </div>
-              </div>
-              <div>
-                <button className="btn btn-primary">SAVE</button>
-
-                <button className="btn btn-warning">Cancel</button>
-              </div>{" "}
-              <progress className="progress w-56 progress-error"></progress>
-            </>
           </div>
         </details>
 
@@ -169,47 +129,6 @@ function AdminPanel({ searchParams }: propsType) {
               </div>
             </div>
           </div>
-
-          <>
-            <select className="select select-bordered w-full max-w-xs">
-              <option disabled selected>
-                Category
-              </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
-            </select>
-
-            <div className="flex items-center flex-col">
-              <div className="pb-4 ">
-                <input
-                  type="text"
-                  placeholder="Search word"
-                  className="input input-bordered w-full"
-                />
-              </div>
-              <div className="pb-4 ">
-                <input
-                  type="text"
-                  placeholder="Search word"
-                  className="input input-bordered w-full"
-                />
-              </div>
-              <div className="pb-4 ">
-                <input
-                  type="text"
-                  placeholder="Search word"
-                  className="input input-bordered w-full"
-                />
-              </div>
-            </div>
-
-            <div>
-              <button className="btn btn-primary">SAVE</button>
-              <button className="btn btn-warning">Cancel</button>
-            </div>
-
-            <progress className="progress w-56 progress-error"></progress>
-          </>
         </details>
       </div>
     </div>
