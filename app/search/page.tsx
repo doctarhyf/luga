@@ -54,24 +54,29 @@ function Search() {
 
   return (
     <div className="p-4">
-      {loading && <progress className="progress w-56"></progress>}
-      <div>
+      <div className="w-full text-center  ">
         <input
           onChange={onSearch}
           value={q}
           type="text"
           placeholder="Type here"
-          className="input input-bordered input-primary w-full max-w-xs"
+          className="input input-bordered input-primary w-full md:max-w-xs md:mx-auto"
         />{" "}
       </div>
 
-      <div className="flex flex-col md:flex-row  gap-4 md:flex-wrap ">
+      {loading && (
+        <div className="w-full text-center">
+          <progress className="progress w-full md:max-w-xs md:mx-auto " />
+        </div>
+      )}
+
+      <div className="flex flex-col md:justify-center md:items-center md:flex-row  gap-4 md:flex-wrap ">
         {wordsfiltered.map((curw, i) => (
           <Link
             key={i}
             href={`${ROUTES.WORD_VIEW.path}?lang=${lang}&wd=${curw.id}`}
           >
-            <div className="p-1 my-2 border rounded-full px-2 cursor-pointer hover:text-orange-500 hover:border-orange-500 md:w-fit ">
+            <div className="p-2 my-2 border rounded-full px-2 cursor-pointer hover:text-orange-500 hover:border-orange-500 md:w-fit ">
               {curw[lang as keyof ILugaWord]}
             </div>
           </Link>
