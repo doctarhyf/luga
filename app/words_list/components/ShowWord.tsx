@@ -1,28 +1,77 @@
+"use client";
 import { sb } from "@/app/db/sb";
 import { ILUGA_WORD_DEFAULT } from "@/app/flow";
 import { ILugaWord } from "@/app/types/types";
+import { useSearchParams } from "next/navigation";
+
 import React from "react";
 
 async function ShowWord({ word }: { word: ILugaWord }) {
+  const searchParams = useSearchParams();
   const selectedWord = word;
+
+  const lang: string | null = searchParams.get("lang");
 
   return (
     <div className="flex items-center flex-col">
       <div className="text-[32pt] font-black bg-gradient-to-r bg-clip-text text-transparent from-purple-500 to-blue-500">
-        {
-          //汉语拼音
-          selectedWord.zh
-        }
+        {lang === "zh" && (
+          <div>
+            {
+              //汉语拼音
+              selectedWord.zh
+            }
+          </div>
+        )}
+        {lang === "fr" && (
+          <div>
+            {
+              //汉语拼音
+              selectedWord.fr
+            }
+          </div>
+        )}
+        {lang === "sw" && (
+          <div>
+            {
+              //汉语拼音
+              selectedWord.sw
+            }
+          </div>
+        )}
       </div>
-      <div className=" text-neutral-400 ">{selectedWord.py}</div>
+      {lang === "zh" && (
+        <div className=" text-neutral-400 ">{selectedWord.py}</div>
+      )}
 
       <div className="flex gap-4 flex-col mt-4 ">
-        <div className="flex gap-4">
-          <div>{selectedWord.fr}</div>
-        </div>
-        <div className="flex gap-4">
-          <div>{selectedWord.sw}</div>
-        </div>
+        {lang !== "zh" && (
+          <div>
+            {" "}
+            <div className="flex gap-4">
+              {" "}
+              <span>Chinese:</span> {selectedWord.zh}
+            </div>
+          </div>
+        )}
+
+        {lang !== "fr" && (
+          <div className="flex gap-4">
+            <div>
+              <span>French:</span>
+              {selectedWord.fr}
+            </div>
+          </div>
+        )}
+
+        {lang !== "sw" && (
+          <div className="flex gap-4">
+            <div>
+              <span>Swahili:</span>
+              {selectedWord.sw}
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="stat w-32 ">
