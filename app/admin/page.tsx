@@ -12,6 +12,7 @@ import {
 } from "../types/types";
 import Image from "next/image";
 import { unescape } from "querystring";
+import BtnDel from "./componemts/BtnDel";
 
 type propsType = {
   searchParams: any;
@@ -58,7 +59,7 @@ function AdminPanel({ searchParams }: propsType) {
           <input
             type="text"
             placeholder="Search"
-            className="input input-bordered w-full w-full"
+            className="input input-bordered w-full "
           />
         </div>
       </div>
@@ -115,19 +116,27 @@ function AdminPanel({ searchParams }: propsType) {
 
             <div className="flex gap-4 flex-col mt-4 ">
               <div className="flex gap-4">
-                <div>
-                  <Image alt="rdc" src={"/drc.png"} width={30} height={30} />
-                </div>
                 <div>{selectedWord.fr}</div>
               </div>
 
               <div className="flex gap-4">
-                <div>
-                  <Image alt="prc" src={"/prc.png"} width={30} height={30} />
-                </div>
                 <div>{selectedWord.sw}</div>
               </div>
             </div>
+
+            <div className="flex gap-4 flex-col my-4">
+              <div>Categories</div>
+              <div>
+                <div className="badge">default</div>
+                <div className="badge badge-neutral">neutral</div>
+                <div className="badge badge-primary">primary</div>
+                <div className="badge badge-secondary">secondary</div>
+                <div className="badge badge-accent">accent</div>
+                <div className="badge badge-ghost">ghost</div>
+              </div>
+            </div>
+
+            <BtnDel />
           </div>
         </details>
       </div>
