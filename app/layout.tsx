@@ -68,6 +68,7 @@ export function Header() {
               <>
                 {mavMenuItems.map((rt: IRoute, i) => (
                   <Link
+                    key={i}
                     href={`${rt.path}`}
                     className="p-2 hover:text-orange-500 hover:font-bold"
                   >
