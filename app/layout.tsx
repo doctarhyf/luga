@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../public/luga.png";
 import { ROUTES } from "./flow";
 import { IRoute } from "./types/types";
 
@@ -32,9 +31,11 @@ export function Header() {
       <div className=" flex-1  w-fit font-bold text-xl ">
         <Link href={ROUTES.ROOT.path}>
           <Image
+          width={400}
+          height={400}
             alt="luga"
             className=" object-contain -ml-20  h-[30pt]"
-            src={logo}
+            src={'/luga.png'}
           />
         </Link>
       </div>
