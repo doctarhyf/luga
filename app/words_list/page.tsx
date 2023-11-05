@@ -95,8 +95,10 @@ async function WordsList({ searchParams }: { searchParams: any }) {
           </div>
         </div>
 
-        <div className="flex-1 ">
-          <ShowWord word={selectedWord} />
+        <div className="flex-1  ">
+          <div className="bg-neutral-300/40 border border-neutral-300  p-4 rounded-md shadow-md ">
+            <ShowWord word={selectedWord} />
+          </div>
         </div>
       </div>
     </div>

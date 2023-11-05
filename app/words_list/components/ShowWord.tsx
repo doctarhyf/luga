@@ -2,6 +2,7 @@
 import { sb } from "@/app/db/sb";
 import { ILUGA_WORD_DEFAULT } from "@/app/flow";
 import { ILugaWord } from "@/app/types/types";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
 import React from "react";
@@ -13,7 +14,7 @@ async function ShowWord({ word }: { word: ILugaWord }) {
   const lang: string | null = searchParams.get("lang");
 
   return (
-    <div className="flex items-center flex-col">
+    <div className="flex ml-4 flex-col">
       <div className="text-[32pt] font-black bg-gradient-to-r bg-clip-text text-transparent from-purple-500 to-blue-500">
         {lang === "zh" && (
           <div>
@@ -40,6 +41,7 @@ async function ShowWord({ word }: { word: ILugaWord }) {
           </div>
         )}
       </div>
+
       {lang === "zh" && (
         <div className=" text-neutral-400 ">{selectedWord.py}</div>
       )}
@@ -50,7 +52,8 @@ async function ShowWord({ word }: { word: ILugaWord }) {
             {" "}
             <div className="flex gap-4">
               {" "}
-              <span>Chinese:</span> {selectedWord.zh}
+              <span className="text-neutral-400">Chinese:</span>{" "}
+              {selectedWord.zh}
             </div>
           </div>
         )}
@@ -58,7 +61,7 @@ async function ShowWord({ word }: { word: ILugaWord }) {
         {lang !== "fr" && (
           <div className="flex gap-4">
             <div>
-              <span>French:</span>
+              <span className="text-neutral-400">French:</span>
               {selectedWord.fr}
             </div>
           </div>
@@ -67,14 +70,22 @@ async function ShowWord({ word }: { word: ILugaWord }) {
         {lang !== "sw" && (
           <div className="flex gap-4">
             <div>
-              <span>Swahili:</span>
+              <span className="text-neutral-400">Swahili:</span>
               {selectedWord.sw}
             </div>
           </div>
         )}
       </div>
 
-      <div className="stat w-32 ">
+      <div>
+        <img
+          src={`https://fretur.us/lugapics/p${selectedWord.id}.jpg`}
+          width={300}
+          height={300}
+        />
+      </div>
+
+      <div className="stat w-32  ">
         <div className="stat-figure text-primary">
           <svg
             xmlns="http://www.w3.org/2000/svg"
