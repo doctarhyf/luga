@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 
 import React from "react";
+import AudioPlayer from "./AudioPlayer";
 
 async function ShowWord({ word }: { word: ILugaWord }) {
   const searchParams = useSearchParams();

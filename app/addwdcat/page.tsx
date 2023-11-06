@@ -1,5 +1,6 @@
 import React from "react";
 import FormNewWord from "./components/FormNewWord";
+import FileUploader from "./components/FileUpload";
 
 function AddWordOrCat() {
   return (
@@ -30,6 +31,10 @@ function AddWordOrCat() {
           <FormNewWord />
         </div>
         r<div className="w-[50%]">Cool</div>
+      </div>
+
+      <div>
+        <FileUploader />
       </div>
     </div>
   );
