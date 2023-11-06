@@ -27,9 +27,12 @@ function FileUploader() {
   };
 
   return (
-    <div>
-      <input type="file" accept=".jpg, .png" onChange={handleFileChange} />
-      <button onClick={uploadFile}>Upload File</button>
+    <div className="flex  flex-col gap-4">
+      <p>Audio File</p>
+      <input type="file" accept=".wav, .mp3" onChange={handleFileChange} />
+      <button className="btn btn-warning" onClick={uploadFile}>
+        Upload File
+      </button>
       {selectedFile && <p>Selected File: {selectedFile.name}</p>}
     </div>
   );
