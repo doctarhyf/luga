@@ -7,9 +7,10 @@ import React, { useState } from "react";
 import FileUploader from "./FileUpload";
 
 function FormNewWord() {
+  const [newcat, setnewcat] = useState("");
   const [addingNewCat, setaddingNewCat] = useState(false);
   const [loading, setloading] = useState(false);
-  const [data, setdata] = useState<ILugaWord>({
+  const [data, setdata] = useState<any>({
     fr: "FR",
     sw: "sw",
     py: "py",
@@ -117,9 +118,11 @@ function FormNewWord() {
               <div>Categories</div>
               <div>
                 <div className="badge">default</div>
-                <div className="badge badge-neutral">neutral</div>
+                <div className="badge badge-outline badge-neutral">neutral</div>
                 <div className="badge badge-primary">primary</div>
-                <div className="badge badge-secondary">secondary</div>
+                <div className="badge badge-outline badge-secondary">
+                  secondary
+                </div>
                 <div className="badge badge-accent">accent</div>
                 <div className="badge badge-ghost">ghost</div>
               </div>
@@ -130,6 +133,10 @@ function FormNewWord() {
             <>
               <div>Nouvelle catgorie</div>
               <input
+                name="newcat"
+                onChange={(e) =>
+                  setdata((old: any) => ({ ...old, newcat: e.target.value }))
+                }
                 type="text"
                 placeholder="Inserer nouvelle catgorie ..."
                 className="input input-bordered w-full max-w-xs"

@@ -117,7 +117,7 @@ export const ROUTES: Record<string, IRoute> = {
     path: "/categories",
     showInMainMenu: true,
   },
-  ADD_WORD_OR_CAT: { label: "Add word or category", path: "/addwdcat" },
+  ADD_WORD_OR_CAT: { label: "Add word or category", path: "/addword" },
   SEARCH: { label: "Search", path: "/search", showInMainMenu: true },
   WORD_VIEW: { label: "Word View", path: "/words_list/word_view" },
   WORDS_LIST: {
